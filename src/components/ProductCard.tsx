@@ -27,9 +27,9 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
   const getProviderLogo = (provider?: string) => {
     const logoUrls = {
-      'ooredoo': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Ooredoo_logo.svg/2560px-Ooredoo_logo.svg.png',
-      'orange': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Orange_logo.svg/2560px-Orange_logo.svg.png',
-      'tunisie_telecom': 'https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/Tunisie_T%C3%A9l%C3%A9com.svg/1280px-Tunisie_T%C3%A9l%C3%A9com.svg.png'
+      'ooredoo': '/lovable-uploads/aec2e4d8-5f2c-496e-99f4-ebea34455e21.png',
+      'orange': '/lovable-uploads/f5768551-82db-43a9-8064-505e7e73598a.png',
+      'tunisie_telecom': '/lovable-uploads/06fe559e-ec75-468f-926f-624eb2846bef.png'
     };
     return provider ? logoUrls[provider as keyof typeof logoUrls] : '';
   };
@@ -38,7 +38,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     switch (provider) {
       case 'ooredoo': return 'from-red-500 to-red-600';
       case 'orange': return 'from-orange-500 to-orange-600';
-      case 'tunisie_telecom': return 'from-blue-500 to-blue-600';
+      case 'tunisie_telecom': return 'from-purple-500 to-purple-600';
       default: return 'from-purple-500 to-purple-600';
     }
   };
@@ -49,7 +49,13 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <div className={`h-48 bg-gradient-to-br ${getProviderColor(product.provider)} flex items-center justify-center p-6`}>
           {product.category === 'freefire' ? (
             <div className="text-center text-white">
-              <Gamepad2 className="w-12 h-12 mx-auto mb-3" />
+              <div className="w-16 h-16 mx-auto mb-3 bg-white rounded-xl flex items-center justify-center">
+                <img 
+                  src="https://logoeps.com/wp-content/uploads/2021/03/free-fire-vector-logo.png" 
+                  alt="Free Fire" 
+                  className="w-12 h-12 object-contain"
+                />
+              </div>
               <div className="text-xl font-bold">{product.name}</div>
               <div className="text-sm opacity-90 mt-1">Free Fire Diamonds</div>
             </div>
@@ -60,7 +66,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                   <img 
                     src={getProviderLogo(product.provider)} 
                     alt={product.provider} 
-                    className="h-10 w-auto object-contain bg-white rounded-lg p-2"
+                    className="h-12 w-auto object-contain bg-white rounded-lg p-2"
                   />
                 )}
               </div>

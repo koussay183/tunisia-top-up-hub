@@ -3,7 +3,7 @@ export interface Product {
   id: string;
   name: string;
   price: number;
-  category: 'freefire' | 'recharge';
+  category: 'freefire' | 'pubg' | 'codm' | 'recharge';
   provider?: 'ooredoo' | 'orange' | 'tunisie_telecom';
   data?: string;
   image: string;
