@@ -14,6 +14,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
+    console.log('Adding to cart:', product);
     addToCart(product);
     toast({
       title: "Added to cart!",
@@ -43,7 +44,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       case 'ooredoo': return 'from-red-500 to-red-600';
       case 'orange': return 'from-orange-500 to-orange-600';
       case 'tunisie_telecom': return 'from-purple-500 to-purple-600';
-      default: return 'from-indigo-500 to-purple-600';
+      default: return 'from-teal-500 to-emerald-600';
     }
   };
 
@@ -77,7 +78,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                     className="w-16 h-16 object-contain"
                   />
                 ) : (
-                  <div className="text-2xl font-bold text-gray-800">
+                  <div className="text-xl font-bold text-gray-800">
                     {product.category.toUpperCase()}
                   </div>
                 )}
@@ -100,7 +101,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
               </div>
               <div className="text-2xl font-bold mb-2">{product.data}</div>
               <div className="text-sm opacity-90 bg-white/20 px-3 py-1 rounded-full">
-                Data Package
+                {product.provider?.replace('_', ' ').toUpperCase()}
               </div>
             </div>
           )}
@@ -122,22 +123,19 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <h3 className="font-bold text-gray-800 mb-3 text-xl leading-tight">{product.name}</h3>
         <p className="text-sm text-gray-600 mb-4 leading-relaxed line-clamp-2">{product.description}</p>
         
-        <div className="flex items-center justify-between">
-          <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-            {formatPrice(product.price)}
-          </span>
-          {product.category === 'recharge' && (
-            <div className="flex items-center text-sm bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full font-medium">
+        {product.category === 'recharge' && (
+          <div className="flex items-center justify-center">
+            <div className="flex items-center text-sm bg-teal-50 text-teal-600 px-3 py-1 rounded-full font-medium">
               30 days validity
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </CardContent>
       
       <CardFooter className="p-6 pt-0">
         <Button 
           onClick={handleAddToCart}
-          className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+          className="w-full bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
         >
           <Plus className="w-5 h-5 mr-2" />
           Add to Cart

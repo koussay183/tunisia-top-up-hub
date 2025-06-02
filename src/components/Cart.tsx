@@ -25,7 +25,7 @@ export const Cart = ({ isOpen, onClose, onCheckout }: CartProps) => {
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm">
       <div className="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-xl transform transition-transform duration-300">
         <Card className="h-full rounded-none border-0">
-          <CardHeader className="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+          <CardHeader className="bg-gradient-to-r from-teal-600 to-emerald-600 text-white">
             <div className="flex items-center justify-between">
               <CardTitle className="flex items-center gap-2">
                 <ShoppingBag className="w-5 h-5" />
@@ -99,13 +99,13 @@ export const Cart = ({ isOpen, onClose, onCheckout }: CartProps) => {
             <div className="border-t p-4 bg-gray-50">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-lg font-semibold">Total:</span>
-                <span className="text-2xl font-bold text-purple-600">
+                <span className="text-2xl font-bold text-teal-600">
                   {formatPrice(getTotalPrice())}
                 </span>
               </div>
               <Button
                 onClick={onCheckout}
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 rounded-lg"
+                className="w-full bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-semibold py-3 rounded-lg"
               >
                 Proceed to Checkout
               </Button>

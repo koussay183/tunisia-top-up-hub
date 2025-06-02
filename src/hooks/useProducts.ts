@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../config/firebase';
 import { Product } from '../types';
+import { defaultProducts } from '../data/defaultData';
 
 export const useProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -13,14 +14,21 @@ export const useProducts = () => {
     const fetchProducts = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, 'products'));
-        const productsData = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        } as Product));
-        setProducts(productsData);
+        if (querySnapshot.empty) {
+          // Use default products if no products in Firebase
+          setProducts(defaultProducts);
+        } else {
+          const productsData = querySnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+          } as Product));
+          setProducts(productsData);
+        }
       } catch (err) {
         console.error('Error fetching products:', err);
-        setError('Failed to fetch products');
+        // Fallback to default products on error
+        setProducts(defaultProducts);
+        setError('Using default products due to connection error');
       } finally {
         setLoading(false);
       }
