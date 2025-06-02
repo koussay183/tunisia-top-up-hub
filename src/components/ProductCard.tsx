@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { useCart } from '../hooks/useCart';
 import { toast } from '@/hooks/use-toast';
-import { Gamepad2, Smartphone, Plus } from 'lucide-react';
+import { Plus, Star } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -34,72 +34,112 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     return provider ? logoUrls[provider as keyof typeof logoUrls] : '';
   };
 
-  const getProviderColor = (provider?: string) => {
+  const getProviderColor = (provider?: string, category?: string) => {
+    if (category === 'freefire') return 'from-orange-500 to-red-600';
+    if (category === 'pubg') return 'from-blue-600 to-purple-600';
+    if (category === 'codm') return 'from-green-600 to-blue-600';
+    
     switch (provider) {
       case 'ooredoo': return 'from-red-500 to-red-600';
       case 'orange': return 'from-orange-500 to-orange-600';
       case 'tunisie_telecom': return 'from-purple-500 to-purple-600';
-      default: return 'from-purple-500 to-purple-600';
+      default: return 'from-indigo-500 to-purple-600';
+    }
+  };
+
+  const getGameLogo = (category: string) => {
+    switch (category) {
+      case 'freefire':
+        return '/lovable-uploads/ecfd21b9-e010-4202-b8a6-1d431f8202ce.png';
+      default:
+        return null;
     }
   };
 
   return (
-    <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white border-0 shadow-lg">
+    <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-105 bg-white border-0 shadow-xl rounded-3xl group">
       <div className="relative">
-        <div className={`h-48 bg-gradient-to-br ${getProviderColor(product.provider)} flex items-center justify-center p-6`}>
-          {product.category === 'freefire' ? (
-            <div className="text-center text-white">
-              <div className="w-16 h-16 mx-auto mb-3 bg-white rounded-xl flex items-center justify-center">
-                <img 
-                  src="https://logoeps.com/wp-content/uploads/2021/03/free-fire-vector-logo.png" 
-                  alt="Free Fire" 
-                  className="w-12 h-12 object-contain"
-                />
+        <div className={`h-56 bg-gradient-to-br ${getProviderColor(product.provider, product.category)} flex items-center justify-center p-6 relative overflow-hidden`}>
+          {/* Background pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-4 left-4 w-20 h-20 bg-white rounded-full"></div>
+            <div className="absolute bottom-4 right-4 w-16 h-16 bg-white rounded-full"></div>
+            <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+          </div>
+          
+          {product.category === 'freefire' || product.category === 'pubg' || product.category === 'codm' ? (
+            <div className="text-center text-white relative z-10">
+              <div className="w-20 h-20 mx-auto mb-4 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                {getGameLogo(product.category) ? (
+                  <img 
+                    src={getGameLogo(product.category)} 
+                    alt={product.category} 
+                    className="w-16 h-16 object-contain"
+                  />
+                ) : (
+                  <div className="text-2xl font-bold text-gray-800">
+                    {product.category.toUpperCase()}
+                  </div>
+                )}
               </div>
-              <div className="text-xl font-bold">{product.name}</div>
-              <div className="text-sm opacity-90 mt-1">Free Fire Diamonds</div>
+              <div className="text-xl font-bold mb-2">{product.name}</div>
+              <div className="text-sm opacity-90 bg-white/20 px-3 py-1 rounded-full">
+                {product.category === 'freefire' ? 'Diamonds' : 'Credits'}
+              </div>
             </div>
           ) : (
-            <div className="text-center text-white">
-              <div className="flex items-center justify-center mb-3">
+            <div className="text-center text-white relative z-10">
+              <div className="flex items-center justify-center mb-4">
                 {getProviderLogo(product.provider) && (
                   <img 
                     src={getProviderLogo(product.provider)} 
                     alt={product.provider} 
-                    className="h-12 w-auto object-contain bg-white rounded-lg p-2"
+                    className="h-16 w-auto object-contain bg-white rounded-xl p-3 shadow-lg group-hover:scale-110 transition-transform duration-300"
                   />
                 )}
               </div>
-              <div className="text-xl font-bold">{product.data}</div>
-              <div className="text-sm opacity-90 mt-1">Data Package</div>
+              <div className="text-2xl font-bold mb-2">{product.data}</div>
+              <div className="text-sm opacity-90 bg-white/20 px-3 py-1 rounded-full">
+                Data Package
+              </div>
             </div>
           )}
         </div>
-        <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg">
-          <span className="text-sm font-bold text-gray-800">{formatPrice(product.price)}</span>
+        
+        {/* Price Badge */}
+        <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-lg border border-white/20">
+          <span className="text-lg font-bold text-gray-800">{formatPrice(product.price)}</span>
+        </div>
+
+        {/* Popular Badge */}
+        <div className="absolute top-4 left-4 bg-yellow-400 text-yellow-900 rounded-xl px-3 py-1 shadow-lg flex items-center">
+          <Star className="w-4 h-4 mr-1 fill-current" />
+          <span className="text-xs font-bold">Popular</span>
         </div>
       </div>
       
-      <CardContent className="p-4">
-        <h3 className="font-semibold text-gray-800 mb-2 text-lg">{product.name}</h3>
-        <p className="text-sm text-gray-600 mb-3 leading-relaxed">{product.description}</p>
+      <CardContent className="p-6">
+        <h3 className="font-bold text-gray-800 mb-3 text-xl leading-tight">{product.name}</h3>
+        <p className="text-sm text-gray-600 mb-4 leading-relaxed line-clamp-2">{product.description}</p>
+        
         <div className="flex items-center justify-between">
-          <span className="text-xl font-bold text-purple-600">{formatPrice(product.price)}</span>
+          <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            {formatPrice(product.price)}
+          </span>
           {product.category === 'recharge' && (
-            <div className="flex items-center text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
-              <Smartphone className="w-3 h-3 mr-1" />
-              30 days
+            <div className="flex items-center text-sm bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full font-medium">
+              30 days validity
             </div>
           )}
         </div>
       </CardContent>
       
-      <CardFooter className="p-4 pt-0">
+      <CardFooter className="p-6 pt-0">
         <Button 
           onClick={handleAddToCart}
-          className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl"
+          className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
         >
-          <Plus className="w-4 h-4 mr-2" />
+          <Plus className="w-5 h-5 mr-2" />
           Add to Cart
         </Button>
       </CardFooter>

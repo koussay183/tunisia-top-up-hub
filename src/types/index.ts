@@ -8,6 +8,23 @@ export interface Product {
   data?: string;
   image: string;
   description: string;
+  gameId?: string; // For gift cards
+  providerId?: string; // For mobile packages
+}
+
+export interface Game {
+  id: string;
+  name: string;
+  logo: string;
+  description: string;
+  category: string;
+}
+
+export interface Provider {
+  id: string;
+  name: string;
+  logo: string;
+  description: string;
 }
 
 export interface CartItem extends Product {
@@ -24,4 +41,10 @@ export interface Order {
   paymentScreenshot?: string;
   status: 'pending' | 'accepted' | 'declined';
   createdAt: Date;
+}
+
+export interface AdminSettings {
+  id: string;
+  d17Numbers: string[];
+  updatedAt: Date;
 }
