@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { ShoppingCart, Search, Store } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useCart } from '../hooks/useCart';
+import { useCart } from '../contexts/CartContext';
 
 interface HeaderProps {
   onCartClick: () => void;

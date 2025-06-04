@@ -1,17 +1,15 @@
-
 import { useState } from 'react';
 import { Header } from '../components/Header';
 import { ProductGrid } from '../components/ProductGrid';
 import { Cart } from '../components/Cart';
 import { CheckoutForm } from '../components/CheckoutForm';
-import { useCart } from '../hooks/useCart';
+import { useCart } from '../contexts/CartContext';
 import { Zap, Shield, DollarSign, Gamepad2, Smartphone, Star } from 'lucide-react';
 
 const Index = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const { cartItems } = useCart();
 
   const handleCheckout = () => {
     setIsCartOpen(false);

@@ -1,8 +1,21 @@
 
-import { useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
 import { CartItem, Product } from '../types';
 
-export const useCart = () => {
+interface CartContextType {
+  cartItems: CartItem[];
+  addToCart: (product: Product) => void;
+  removeFromCart: (productId: string) => void;
+  updateQuantity: (productId: string, quantity: number) => void;
+  clearCart: () => void;
+  getTotalPrice: () => number;
+  getTotalItems: () => number;
+  isLoaded: boolean;
+}
+
+const CartContext = createContext<CartContextType | undefined>(undefined);
+
+export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -90,7 +103,7 @@ export const useCart = () => {
     return cartItems.reduce((total, item) => total + item.quantity, 0);
   }, [cartItems]);
 
-  return {
+  const value = {
     cartItems,
     addToCart,
     removeFromCart,
@@ -100,4 +113,18 @@ export const useCart = () => {
     getTotalItems,
     isLoaded
   };
+
+  return (
+    <CartContext.Provider value={value}>
+      {children}
+    </CartContext.Provider>
+  );
+};
+
+export const useCart = () => {
+  const context = useContext(CartContext);
+  if (context === undefined) {
+    throw new Error('useCart must be used within a CartProvider');
+  }
+  return context;
 };

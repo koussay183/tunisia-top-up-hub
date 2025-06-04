@@ -1,7 +1,7 @@
 import { Product } from '../types';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { useCart } from '../hooks/useCart';
+import { useCart } from '../contexts/CartContext';
 import { toast } from '@/hooks/use-toast';
 import { Plus, Star } from 'lucide-react';
 
