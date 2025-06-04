@@ -1,4 +1,3 @@
-
 import { Product } from '../types';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
@@ -11,14 +10,19 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
-  const { addToCart } = useCart();
+  const { addToCart, cartItems } = useCart();
 
   const handleAddToCart = () => {
     console.log('Adding to cart:', product);
     addToCart(product);
+    
+    // Get current quantity for this product
+    const existingItem = cartItems.find(item => item.id === product.id);
+    const newQuantity = existingItem ? existingItem.quantity + 1 : 1;
+    
     toast({
       title: "Added to cart!",
-      description: `${product.name} has been added to your cart.`,
+      description: `${product.name} (${newQuantity}) has been added to your cart.`,
     });
   };
 

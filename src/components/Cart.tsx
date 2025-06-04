@@ -1,5 +1,4 @@
 
-import { CartItem } from '../types';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -22,6 +21,14 @@ export const Cart = ({ isOpen, onClose, onCheckout }: CartProps) => {
   console.log('Cart component - isOpen:', isOpen, 'cartItems:', cartItems, 'isLoaded:', isLoaded);
 
   if (!isOpen) return null;
+
+  const handleQuantityDecrease = (id: string, currentQuantity: number) => {
+    updateQuantity(id, currentQuantity - 1);
+  };
+
+  const handleQuantityIncrease = (id: string, currentQuantity: number) => {
+    updateQuantity(id, currentQuantity + 1);
+  };
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm">
@@ -67,7 +74,7 @@ export const Cart = ({ isOpen, onClose, onCheckout }: CartProps) => {
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                        onClick={() => handleQuantityDecrease(item.id, item.quantity)}
                         className="w-8 h-8 p-0"
                       >
                         <Minus className="w-3 h-3" />
@@ -78,7 +85,7 @@ export const Cart = ({ isOpen, onClose, onCheckout }: CartProps) => {
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        onClick={() => handleQuantityIncrease(item.id, item.quantity)}
                         className="w-8 h-8 p-0"
                       >
                         <Plus className="w-3 h-3" />

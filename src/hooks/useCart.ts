@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { CartItem, Product } from '../types';
 
 export const useCart = () => {
@@ -28,7 +28,7 @@ export const useCart = () => {
     loadCart();
   }, []);
 
-  // Save to localStorage whenever cartItems changes
+  // Save to localStorage whenever cartItems changes (but only after initial load)
   useEffect(() => {
     if (isLoaded) {
       console.log('Saving cart to localStorage:', cartItems);
@@ -36,31 +36,37 @@ export const useCart = () => {
     }
   }, [cartItems, isLoaded]);
 
-  const addToCart = (product: Product) => {
+  const addToCart = useCallback((product: Product) => {
     console.log('Adding product to cart:', product);
     setCartItems(prev => {
-      const existingItem = prev.find(item => item.id === product.id);
-      if (existingItem) {
-        const updated = prev.map(item =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
+      const existingItemIndex = prev.findIndex(item => item.id === product.id);
+      
+      if (existingItemIndex >= 0) {
+        // Item exists, increment quantity
+        const updated = [...prev];
+        updated[existingItemIndex] = {
+          ...updated[existingItemIndex],
+          quantity: updated[existingItemIndex].quantity + 1
+        };
         console.log('Updated cart (existing item):', updated);
         return updated;
+      } else {
+        // New item, add to cart
+        const newCart = [...prev, { ...product, quantity: 1 }];
+        console.log('Updated cart (new item):', newCart);
+        return newCart;
       }
-      const newCart = [...prev, { ...product, quantity: 1 }];
-      console.log('Updated cart (new item):', newCart);
-      return newCart;
     });
-  };
+  }, []);
 
-  const removeFromCart = (productId: string) => {
+  const removeFromCart = useCallback((productId: string) => {
+    console.log('Removing product from cart:', productId);
     setCartItems(prev => prev.filter(item => item.id !== productId));
-  };
+  }, []);
 
-  const updateQuantity = (productId: string, quantity: number) => {
-    if (quantity === 0) {
+  const updateQuantity = useCallback((productId: string, quantity: number) => {
+    console.log('Updating quantity for product:', productId, 'to:', quantity);
+    if (quantity <= 0) {
       removeFromCart(productId);
       return;
     }
@@ -69,19 +75,20 @@ export const useCart = () => {
         item.id === productId ? { ...item, quantity } : item
       )
     );
-  };
+  }, [removeFromCart]);
 
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
+    console.log('Clearing cart');
     setCartItems([]);
-  };
+  }, []);
 
-  const getTotalPrice = () => {
+  const getTotalPrice = useCallback(() => {
     return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
-  };
+  }, [cartItems]);
 
-  const getTotalItems = () => {
+  const getTotalItems = useCallback(() => {
     return cartItems.reduce((total, item) => total + item.quantity, 0);
-  };
+  }, [cartItems]);
 
   return {
     cartItems,
