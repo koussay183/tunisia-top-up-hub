@@ -23,14 +23,14 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-teal-50 to-emerald-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-blue-50">
       <Header 
         onCartClick={() => setIsCartOpen(true)}
         onSearch={setSearchQuery}
       />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-teal-600 via-emerald-600 to-green-700 text-white py-20 relative overflow-hidden">
+      <section className="bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-700 text-white py-20 relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full"></div>
@@ -88,7 +88,7 @@ const Index = () => {
             </div>
             
             <div className="text-center group">
-              <div className="w-24 h-24 bg-gradient-to-r from-teal-500 to-emerald-600 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-24 h-24 bg-gradient-to-r from-purple-500 to-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <Smartphone className="w-12 h-12 text-white" />
               </div>
               <h4 className="text-2xl font-bold text-gray-800 mb-4">Mobile Recharge</h4>
@@ -119,7 +119,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="text-center md:text-left">
-              <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
+              <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                 TahaShop
               </h3>
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
@@ -148,7 +148,7 @@ const Index = () => {
               <h4 className="text-xl font-bold mb-6">Contact Info</h4>
               <div className="space-y-4 text-gray-300 text-lg">
                 <div className="flex items-center justify-center">
-                  <Zap className="w-5 h-5 mr-2 text-teal-400" />
+                  <Zap className="w-5 h-5 mr-2 text-purple-400" />
                   24/7 Support
                 </div>
                 <div className="flex items-center justify-center">

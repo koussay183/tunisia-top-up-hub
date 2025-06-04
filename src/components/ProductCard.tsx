@@ -44,7 +44,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       case 'ooredoo': return 'from-red-500 to-red-600';
       case 'orange': return 'from-orange-500 to-orange-600';
       case 'tunisie_telecom': return 'from-purple-500 to-purple-600';
-      default: return 'from-teal-500 to-emerald-600';
+      default: return 'from-purple-500 to-blue-600';
     }
   };
 
@@ -125,7 +125,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         
         {product.category === 'recharge' && (
           <div className="flex items-center justify-center">
-            <div className="flex items-center text-sm bg-teal-50 text-teal-600 px-3 py-1 rounded-full font-medium">
+            <div className="flex items-center text-sm bg-purple-50 text-purple-600 px-3 py-1 rounded-full font-medium">
               30 days validity
             </div>
           </div>
@@ -135,7 +135,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       <CardFooter className="p-6 pt-0">
         <Button 
           onClick={handleAddToCart}
-          className="w-full bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+          className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
         >
           <Plus className="w-5 h-5 mr-2" />
           Add to Cart

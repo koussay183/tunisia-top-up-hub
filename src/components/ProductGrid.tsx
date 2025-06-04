@@ -45,7 +45,7 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
     return (
       <div className="container mx-auto px-4 py-16">
         <div className="flex items-center justify-center">
-          <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
+          <Loader2 className="w-8 h-8 animate-spin text-purple-600" />
           <span className="ml-2 text-gray-600">Loading products...</span>
         </div>
       </div>
@@ -75,8 +75,8 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
               onClick={() => setActiveCategory(category.id as any)}
               className={`px-8 py-4 rounded-2xl transition-all text-base font-semibold shadow-lg ${
                 activeCategory === category.id
-                  ? 'bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-teal-200 border-0 transform scale-105'
-                  : 'border-2 border-teal-200 text-teal-700 hover:bg-teal-50 bg-white hover:border-teal-300 hover:shadow-md'
+                  ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-purple-200 border-0 transform scale-105'
+                  : 'border-2 border-purple-200 text-purple-700 hover:bg-purple-50 bg-white hover:border-purple-300 hover:shadow-md'
               }`}
             >
               <IconComponent className="w-5 h-5 mr-3" />
