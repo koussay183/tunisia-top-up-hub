@@ -115,11 +115,15 @@ export const CheckoutForm = ({ isOpen, onClose, onOrderComplete }: CheckoutFormP
         description: "Your order has been submitted successfully. We'll process it shortly.",
       });
 
+      // Clear cart and reset form
       clearCart();
-      onOrderComplete();
       setFormData({ customerName: '', phone: '', email: '' });
       setPaymentScreenshot(null);
       setPreviewUrl('');
+      
+      // Close checkout and call completion callback
+      onClose();
+      onOrderComplete();
     } catch (error) {
       console.error('Error submitting order:', error);
       toast({

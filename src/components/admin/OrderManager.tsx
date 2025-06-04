@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -6,7 +5,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Eye, Check, X, Download } from 'lucide-react';
-import { collection, getDocs, updateDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../config/firebase';
 import { toast } from '@/hooks/use-toast';
 import { Order } from '../../types';
@@ -42,13 +41,56 @@ export const OrderManager = () => {
     }
   };
 
+  const deleteCloudinaryImage = async (imageUrl: string) => {
+    try {
+      // Extract public_id from Cloudinary URL
+      const urlParts = imageUrl.split('/');
+      const publicIdWithExtension = urlParts[urlParts.length - 1];
+      const publicId = publicIdWithExtension.split('.')[0];
+      
+      // Delete from Cloudinary
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/looklify/image/destroy`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            public_id: publicId,
+            api_key: '616536536546451',
+            timestamp: Math.round(new Date().getTime() / 1000),
+          }),
+        }
+      );
+      
+      console.log('Cloudinary deletion response:', await response.json());
+    } catch (error) {
+      console.error('Error deleting image from Cloudinary:', error);
+    }
+  };
+
   const updateOrderStatus = async (orderId: string, status: 'accepted' | 'declined') => {
     try {
-      await updateDoc(doc(db, 'orders', orderId), { status });
-      toast({
-        title: "Success",
-        description: `Order ${status} successfully`
-      });
+      if (status === 'accepted') {
+        await updateDoc(doc(db, 'orders', orderId), { status });
+        toast({
+          title: "Success",
+          description: "Order accepted successfully"
+        });
+      } else if (status === 'declined') {
+        // Delete the order and associated image
+        const orderToDelete = orders.find(order => order.id === orderId);
+        if (orderToDelete?.paymentScreenshot) {
+          await deleteCloudinaryImage(orderToDelete.paymentScreenshot);
+        }
+        await deleteDoc(doc(db, 'orders', orderId));
+        toast({
+          title: "Success",
+          description: "Order declined and deleted successfully"
+        });
+      }
+      
       fetchOrders();
       setIsDialogOpen(false);
     } catch (error) {
@@ -94,60 +136,63 @@ export const OrderManager = () => {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Orders Management</CardTitle>
-        <CardDescription>
+    <Card className="shadow-xl border-0 bg-white">
+      <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b border-purple-100">
+        <CardTitle className="text-2xl font-bold text-gray-800">Orders Management</CardTitle>
+        <CardDescription className="text-lg text-gray-600">
           Review and manage customer orders
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Order ID</TableHead>
-              <TableHead>Customer</TableHead>
-              <TableHead>Total</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Date</TableHead>
-              <TableHead>Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {orders.map((order) => (
-              <TableRow key={order.id}>
-                <TableCell className="font-mono text-sm">
-                  {order.id.slice(-8).toUpperCase()}
-                </TableCell>
-                <TableCell>
-                  <div>
-                    <div className="font-medium">{order.customerName}</div>
-                    <div className="text-sm text-gray-500">{order.phone}</div>
-                  </div>
-                </TableCell>
-                <TableCell className="font-semibold">
-                  {formatPrice(order.total)}
-                </TableCell>
-                <TableCell>
-                  {getStatusBadge(order.status)}
-                </TableCell>
-                <TableCell className="text-sm">
-                  {formatDate(order.createdAt)}
-                </TableCell>
-                <TableCell>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleViewOrder(order)}
-                  >
-                    <Eye className="w-4 h-4 mr-1" />
-                    View
-                  </Button>
-                </TableCell>
+      <CardContent className="p-0">
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow className="border-b border-gray-100">
+                <TableHead className="font-bold text-gray-700">Order ID</TableHead>
+                <TableHead className="font-bold text-gray-700">Customer</TableHead>
+                <TableHead className="font-bold text-gray-700">Total</TableHead>
+                <TableHead className="font-bold text-gray-700">Status</TableHead>
+                <TableHead className="font-bold text-gray-700">Date</TableHead>
+                <TableHead className="font-bold text-gray-700">Actions</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {orders.map((order) => (
+                <TableRow key={order.id} className="hover:bg-gray-50 transition-colors">
+                  <TableCell className="font-mono text-sm font-semibold">
+                    {order.id.slice(-8).toUpperCase()}
+                  </TableCell>
+                  <TableCell>
+                    <div>
+                      <div className="font-semibold text-gray-800">{order.customerName}</div>
+                      <div className="text-sm text-gray-500">{order.phone}</div>
+                    </div>
+                  </TableCell>
+                  <TableCell className="font-bold text-lg text-purple-600">
+                    {formatPrice(order.total)}
+                  </TableCell>
+                  <TableCell>
+                    {getStatusBadge(order.status)}
+                  </TableCell>
+                  <TableCell className="text-sm font-medium">
+                    {formatDate(order.createdAt)}
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handleViewOrder(order)}
+                      className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white border-0 hover:from-purple-700 hover:to-indigo-700"
+                    >
+                      <Eye className="w-4 h-4 mr-1" />
+                      View
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
