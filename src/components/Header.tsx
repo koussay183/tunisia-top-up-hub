@@ -12,12 +12,15 @@ interface HeaderProps {
 
 export const Header = ({ onCartClick, onSearch }: HeaderProps) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const { getTotalItems } = useCart();
+  const { getTotalItems, isLoaded } = useCart();
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSearch(searchQuery);
   };
+
+  const totalItems = getTotalItems();
+  console.log('Header - Total items:', totalItems, 'isLoaded:', isLoaded);
 
   return (
     <header className="sticky top-0 z-50 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-700 shadow-lg">
@@ -40,9 +43,9 @@ export const Header = ({ onCartClick, onSearch }: HeaderProps) => {
             className="relative text-white hover:text-purple-200 hover:bg-white/10"
           >
             <ShoppingCart className="w-6 h-6" />
-            {getTotalItems() > 0 && (
+            {isLoaded && totalItems > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold">
-                {getTotalItems()}
+                {totalItems}
               </span>
             )}
           </Button>

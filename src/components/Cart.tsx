@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useCart } from '../hooks/useCart';
-import { Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
+import { Minus, Plus, Trash2, ShoppingBag, Loader2 } from 'lucide-react';
 
 interface CartProps {
   isOpen: boolean;
@@ -13,11 +13,13 @@ interface CartProps {
 }
 
 export const Cart = ({ isOpen, onClose, onCheckout }: CartProps) => {
-  const { cartItems, updateQuantity, removeFromCart, getTotalPrice } = useCart();
+  const { cartItems, updateQuantity, removeFromCart, getTotalPrice, isLoaded } = useCart();
 
   const formatPrice = (price: number) => {
     return `${(price / 1000).toFixed(1)}DT`;
   };
+
+  console.log('Cart component - isOpen:', isOpen, 'cartItems:', cartItems, 'isLoaded:', isLoaded);
 
   if (!isOpen) return null;
 
@@ -41,7 +43,12 @@ export const Cart = ({ isOpen, onClose, onCheckout }: CartProps) => {
           </CardHeader>
 
           <CardContent className="flex-1 overflow-y-auto p-0">
-            {cartItems.length === 0 ? (
+            {!isLoaded ? (
+              <div className="flex flex-col items-center justify-center h-64 text-gray-500">
+                <Loader2 className="w-8 h-8 animate-spin mb-4" />
+                <p className="text-lg font-medium">Loading cart...</p>
+              </div>
+            ) : cartItems.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-64 text-gray-500">
                 <ShoppingBag className="w-16 h-16 mb-4 opacity-50" />
                 <p className="text-lg font-medium">Your cart is empty</p>
@@ -95,7 +102,7 @@ export const Cart = ({ isOpen, onClose, onCheckout }: CartProps) => {
             )}
           </CardContent>
 
-          {cartItems.length > 0 && (
+          {cartItems.length > 0 && isLoaded && (
             <div className="border-t p-4 bg-gray-50">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-lg font-semibold">Total:</span>
