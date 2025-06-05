@@ -1,9 +1,11 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ShoppingCart, Search, Store } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useCart } from '../contexts/CartContext';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 interface HeaderProps {
   onCartClick: () => void;
@@ -13,6 +15,13 @@ interface HeaderProps {
 export const Header = ({ onCartClick, onSearch }: HeaderProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const { getTotalItems, isLoaded } = useCart();
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    // Set document direction based on language
+    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,31 +40,34 @@ export const Header = ({ onCartClick, onSearch }: HeaderProps) => {
               <Store className="w-5 h-5 md:w-7 md:h-7 text-purple-600" />
             </div>
             <div>
-              <h1 className="text-xl md:text-2xl font-bold text-white">Chargili</h1>
-              <p className="text-xs md:text-sm text-purple-100 hidden sm:block">Gaming Cards & Mobile Recharge</p>
+              <h1 className="text-xl md:text-2xl font-bold text-white">{t('header.title')}</h1>
+              <p className="text-xs md:text-sm text-purple-100 hidden sm:block">{t('header.subtitle')}</p>
             </div>
           </div>
           
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onCartClick}
-            className="relative text-white hover:text-purple-200 hover:bg-white/10 p-2"
-          >
-            <ShoppingCart className="w-5 h-5 md:w-6 md:h-6" />
-            {isLoaded && totalItems > 0 && (
-              <span className="absolute -top-1 -right-1 md:-top-2 md:-right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 md:w-6 md:h-6 flex items-center justify-center font-bold">
-                {totalItems}
-              </span>
-            )}
-          </Button>
+          <div className="flex items-center gap-2">
+            <LanguageSwitcher />
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={onCartClick}
+              className="relative text-white hover:text-purple-200 hover:bg-white/10 p-2"
+            >
+              <ShoppingCart className="w-5 h-5 md:w-6 md:h-6" />
+              {isLoaded && totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 md:-top-2 md:-right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 md:w-6 md:h-6 flex items-center justify-center font-bold">
+                  {totalItems}
+                </span>
+              )}
+            </Button>
+          </div>
         </div>
         
         <form onSubmit={handleSearchSubmit} className="mt-3 md:mt-4 relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 md:w-5 md:h-5" />
           <Input
             type="text"
-            placeholder="Search for games or mobile recharge..."
+            placeholder={t('header.searchPlaceholder')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10 md:pl-12 bg-white/95 border-0 text-gray-700 placeholder-gray-500 h-10 md:h-12 text-sm md:text-base rounded-xl"

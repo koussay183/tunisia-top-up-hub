@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useCart } from '../contexts/CartContext';
 import { Minus, Plus, Trash2, ShoppingBag, Loader2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface CartProps {
   isOpen: boolean;
@@ -13,6 +14,7 @@ interface CartProps {
 
 export const Cart = ({ isOpen, onClose, onCheckout }: CartProps) => {
   const { cartItems, updateQuantity, removeFromCart, getTotalPrice, isLoaded } = useCart();
+  const { t } = useTranslation();
 
   const formatPrice = (price: number) => {
     return `${(price / 1000).toFixed(1)}DT`;
@@ -38,14 +40,14 @@ export const Cart = ({ isOpen, onClose, onCheckout }: CartProps) => {
             <div className="flex items-center justify-between">
               <CardTitle className="flex items-center gap-2">
                 <ShoppingBag className="w-5 h-5" />
-                Shopping Cart
+                {t('cart.title')}
               </CardTitle>
               <Button variant="ghost" size="sm" onClick={onClose} className="text-white hover:bg-white/20">
                 ✕
               </Button>
             </div>
             <Badge variant="secondary" className="w-fit">
-              {cartItems.length} {cartItems.length === 1 ? 'item' : 'items'}
+              {cartItems.length} {cartItems.length === 1 ? t('cart.item') : t('cart.items')}
             </Badge>
           </CardHeader>
 
@@ -53,13 +55,13 @@ export const Cart = ({ isOpen, onClose, onCheckout }: CartProps) => {
             {!isLoaded ? (
               <div className="flex flex-col items-center justify-center h-64 text-gray-500">
                 <Loader2 className="w-8 h-8 animate-spin mb-4" />
-                <p className="text-lg font-medium">Loading cart...</p>
+                <p className="text-lg font-medium">{t('cart.loading')}</p>
               </div>
             ) : cartItems.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-64 text-gray-500">
                 <ShoppingBag className="w-16 h-16 mb-4 opacity-50" />
-                <p className="text-lg font-medium">Your cart is empty</p>
-                <p className="text-sm">Add some products to get started!</p>
+                <p className="text-lg font-medium">{t('cart.empty')}</p>
+                <p className="text-sm">{t('cart.emptyDesc')}</p>
               </div>
             ) : (
               <div className="p-4 space-y-4">
@@ -67,7 +69,7 @@ export const Cart = ({ isOpen, onClose, onCheckout }: CartProps) => {
                   <div key={item.id} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <div className="flex-1">
                       <h4 className="font-medium text-gray-800">{item.name}</h4>
-                      <p className="text-sm text-gray-600">{formatPrice(item.price)} each</p>
+                      <p className="text-sm text-gray-600">{formatPrice(item.price)} {t('cart.each')}</p>
                     </div>
                     
                     <div className="flex items-center gap-2">
@@ -112,7 +114,7 @@ export const Cart = ({ isOpen, onClose, onCheckout }: CartProps) => {
           {cartItems.length > 0 && isLoaded && (
             <div className="border-t p-4 bg-gray-50">
               <div className="flex items-center justify-between mb-4">
-                <span className="text-lg font-semibold">Total:</span>
+                <span className="text-lg font-semibold">{t('cart.total')}:</span>
                 <span className="text-2xl font-bold text-purple-600">
                   {formatPrice(getTotalPrice())}
                 </span>
@@ -121,7 +123,7 @@ export const Cart = ({ isOpen, onClose, onCheckout }: CartProps) => {
                 onClick={onCheckout}
                 className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 rounded-lg"
               >
-                Proceed to Checkout
+                {t('cart.checkout')}
               </Button>
             </div>
           )}

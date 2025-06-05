@@ -4,6 +4,7 @@ import { ProductCard } from './ProductCard';
 import { useProducts } from '../hooks/useProducts';
 import { Button } from '@/components/ui/button';
 import { Grid, Gamepad2, Smartphone, Loader2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface ProductGridProps {
   searchQuery: string;
@@ -12,6 +13,7 @@ interface ProductGridProps {
 export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'games' | 'recharge'>('all');
   const { products, loading, error } = useProducts();
+  const { t } = useTranslation();
 
   const filteredProducts = useMemo(() => {
     let filtered = products;
@@ -36,9 +38,9 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
   }, [products, activeCategory, searchQuery]);
 
   const categories = [
-    { id: 'all', label: 'All Products', icon: Grid },
-    { id: 'games', label: 'Game Cards', icon: Gamepad2 },
-    { id: 'recharge', label: 'Mobile Recharge', icon: Smartphone }
+    { id: 'all', label: t('categories.all'), icon: Grid },
+    { id: 'games', label: t('categories.games'), icon: Gamepad2 },
+    { id: 'recharge', label: t('categories.recharge'), icon: Smartphone }
   ];
 
   if (loading) {
@@ -46,7 +48,7 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="flex items-center justify-center">
           <Loader2 className="w-6 h-6 md:w-8 md:h-8 animate-spin text-purple-600" />
-          <span className="ml-2 text-gray-600 text-sm md:text-base">Loading products...</span>
+          <span className="ml-2 text-gray-600 text-sm md:text-base">{t('products.loading')}</span>
         </div>
       </div>
     );
@@ -97,8 +99,8 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
       {filteredProducts.length === 0 && (
         <div className="text-center py-16 md:py-20">
           <Grid className="w-16 h-16 md:w-20 md:h-20 mx-auto text-gray-300 mb-4 md:mb-6" />
-          <h3 className="text-xl md:text-2xl font-semibold text-gray-500 mb-2 md:mb-3">No products found</h3>
-          <p className="text-gray-400 text-base md:text-lg">Try adjusting your search or filter criteria</p>
+          <h3 className="text-xl md:text-2xl font-semibold text-gray-500 mb-2 md:mb-3">{t('products.noProducts')}</h3>
+          <p className="text-gray-400 text-base md:text-lg">{t('products.noProductsDesc')}</p>
         </div>
       )}
     </div>
