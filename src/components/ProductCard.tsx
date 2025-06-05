@@ -1,3 +1,4 @@
+
 import { Product } from '../types';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
@@ -62,49 +63,49 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-105 bg-white border-0 shadow-xl rounded-3xl group">
+    <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] bg-white border-0 shadow-lg rounded-2xl group relative">
       <div className="relative">
-        <div className={`h-56 bg-gradient-to-br ${getProviderColor(product.provider, product.category)} flex items-center justify-center p-6 relative overflow-hidden`}>
+        <div className={`h-40 md:h-48 bg-gradient-to-br ${getProviderColor(product.provider, product.category)} flex items-center justify-center p-4 md:p-6 relative overflow-hidden`}>
           {/* Background pattern */}
           <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-4 left-4 w-20 h-20 bg-white rounded-full"></div>
-            <div className="absolute bottom-4 right-4 w-16 h-16 bg-white rounded-full"></div>
-            <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute top-2 left-2 md:top-4 md:left-4 w-12 md:w-20 h-12 md:h-20 bg-white rounded-full"></div>
+            <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 w-8 md:w-16 h-8 md:h-16 bg-white rounded-full"></div>
+            <div className="absolute top-1/2 left-1/2 w-16 md:w-24 h-16 md:h-24 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
           </div>
           
           {product.category === 'freefire' || product.category === 'pubg' || product.category === 'codm' ? (
             <div className="text-center text-white relative z-10">
-              <div className="w-20 h-20 mx-auto mb-4 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-3 bg-white rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                 {getGameLogo(product.category) ? (
                   <img 
                     src={getGameLogo(product.category)} 
                     alt={product.category} 
-                    className="w-16 h-16 object-contain"
+                    className="w-10 h-10 md:w-12 md:h-12 object-contain"
                   />
                 ) : (
-                  <div className="text-xl font-bold text-gray-800">
+                  <div className="text-sm md:text-lg font-bold text-gray-800">
                     {product.category.toUpperCase()}
                   </div>
                 )}
               </div>
-              <div className="text-xl font-bold mb-2">{product.name}</div>
-              <div className="text-sm opacity-90 bg-white/20 px-3 py-1 rounded-full">
+              <div className="text-lg md:text-xl font-bold mb-1 md:mb-2">{product.name}</div>
+              <div className="text-xs md:text-sm opacity-90 bg-white/20 px-2 md:px-3 py-1 rounded-full">
                 {product.category === 'freefire' ? 'Diamonds' : 'Credits'}
               </div>
             </div>
           ) : (
             <div className="text-center text-white relative z-10">
-              <div className="flex items-center justify-center mb-4">
+              <div className="flex items-center justify-center mb-2 md:mb-3">
                 {getProviderLogo(product.provider) && (
                   <img 
                     src={getProviderLogo(product.provider)} 
                     alt={product.provider} 
-                    className="h-16 w-auto object-contain bg-white rounded-xl p-3 shadow-lg group-hover:scale-110 transition-transform duration-300"
+                    className="h-10 md:h-12 w-auto object-contain bg-white rounded-lg md:rounded-xl p-2 md:p-3 shadow-lg group-hover:scale-110 transition-transform duration-300"
                   />
                 )}
               </div>
-              <div className="text-2xl font-bold mb-2">{product.data}</div>
-              <div className="text-sm opacity-90 bg-white/20 px-3 py-1 rounded-full">
+              <div className="text-xl md:text-2xl font-bold mb-1 md:mb-2">{product.data}</div>
+              <div className="text-xs md:text-sm opacity-90 bg-white/20 px-2 md:px-3 py-1 rounded-full">
                 {product.provider?.replace('_', ' ').toUpperCase()}
               </div>
             </div>
@@ -112,36 +113,36 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         </div>
         
         {/* Price Badge */}
-        <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-lg border border-white/20">
-          <span className="text-lg font-bold text-gray-800">{formatPrice(product.price)}</span>
+        <div className="absolute top-2 md:top-3 right-2 md:right-3 bg-white/95 backdrop-blur-sm rounded-xl md:rounded-2xl px-2 md:px-3 py-1 md:py-2 shadow-lg border border-white/20">
+          <span className="text-sm md:text-base font-bold text-gray-800">{formatPrice(product.price)}</span>
         </div>
 
         {/* Popular Badge */}
-        <div className="absolute top-4 left-4 bg-yellow-400 text-yellow-900 rounded-xl px-3 py-1 shadow-lg flex items-center">
-          <Star className="w-4 h-4 mr-1 fill-current" />
+        <div className="absolute top-2 md:top-3 left-2 md:left-3 bg-yellow-400 text-yellow-900 rounded-lg md:rounded-xl px-2 md:px-3 py-1 shadow-lg flex items-center">
+          <Star className="w-3 h-3 md:w-4 md:h-4 mr-1 fill-current" />
           <span className="text-xs font-bold">Popular</span>
         </div>
       </div>
       
-      <CardContent className="p-6">
-        <h3 className="font-bold text-gray-800 mb-3 text-xl leading-tight">{product.name}</h3>
-        <p className="text-sm text-gray-600 mb-4 leading-relaxed line-clamp-2">{product.description}</p>
+      <CardContent className="p-3 md:p-4">
+        <h3 className="font-bold text-gray-800 mb-2 text-base md:text-lg leading-tight">{product.name}</h3>
+        <p className="text-xs md:text-sm text-gray-600 mb-3 md:mb-4 leading-relaxed line-clamp-2">{product.description}</p>
         
         {product.category === 'recharge' && (
           <div className="flex items-center justify-center">
-            <div className="flex items-center text-sm bg-purple-50 text-purple-600 px-3 py-1 rounded-full font-medium">
+            <div className="flex items-center text-xs md:text-sm bg-purple-50 text-purple-600 px-2 md:px-3 py-1 rounded-full font-medium">
               30 days validity
             </div>
           </div>
         )}
       </CardContent>
       
-      <CardFooter className="p-6 pt-0">
+      <CardFooter className="p-3 md:p-4 pt-0">
         <Button 
           onClick={handleAddToCart}
-          className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+          className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-3 md:py-4 rounded-xl md:rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm md:text-base"
         >
-          <Plus className="w-5 h-5 mr-2" />
+          <Plus className="w-4 h-4 md:w-5 md:h-5 mr-2" />
           Add to Cart
         </Button>
       </CardFooter>
