@@ -30,78 +30,119 @@ const Index = () => {
         onSearch={setSearchQuery}
       />
       
-      {/* Hero Section - Mobile Optimized */}
-      <section className="bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-700 text-white py-10 md:py-20 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 opacity-5 md:opacity-10">
-          <div className="absolute top-5 md:top-10 left-5 md:left-10 w-16 md:w-32 h-16 md:h-32 bg-white rounded-full"></div>
-          <div className="absolute bottom-5 md:bottom-10 right-5 md:right-10 w-12 md:w-24 h-12 md:h-24 bg-white rounded-full"></div>
-          <div className="absolute top-1/2 left-1/4 w-10 md:w-20 h-10 md:h-20 bg-white rounded-full"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-8 leading-tight">
-            {t('hero.title')} <br />
-            <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-              {t('hero.titleHighlight')}
-            </span>
+      {/* Quick Welcome Banner - Minimal and Clean */}
+      <section className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-6 md:py-8">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">
+            {t('hero.title')} <span className="text-yellow-400">{t('hero.titleHighlight')}</span>
           </h2>
-          <p className="text-lg md:text-2xl lg:text-3xl opacity-90 mb-8 md:mb-12 max-w-4xl mx-auto leading-relaxed px-4">
+          <p className="text-sm md:text-lg opacity-90 mb-4">
             {t('hero.subtitle')}
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 max-w-4xl mx-auto">
-            <div className="bg-white/20 backdrop-blur-sm rounded-2xl md:rounded-3xl px-4 md:px-8 py-4 md:py-6 flex items-center justify-center shadow-lg hover:bg-white/30 transition-all duration-300">
-              <Zap className="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3 text-yellow-400" />
-              <span className="font-semibold text-sm md:text-lg">{t('hero.instantDelivery')}</span>
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+            <div className="bg-white/20 backdrop-blur-sm rounded-xl px-4 py-2 flex items-center">
+              <Zap className="w-4 h-4 mr-2 text-yellow-400" />
+              <span className="font-semibold text-sm">{t('hero.instantDelivery')}</span>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-2xl md:rounded-3xl px-4 md:px-8 py-4 md:py-6 flex items-center justify-center shadow-lg hover:bg-white/30 transition-all duration-300">
-              <Shield className="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3 text-green-400" />
-              <span className="font-semibold text-sm md:text-lg">{t('hero.securePayment')}</span>
+            <div className="bg-white/20 backdrop-blur-sm rounded-xl px-4 py-2 flex items-center">
+              <Shield className="w-4 h-4 mr-2 text-green-400" />
+              <span className="font-semibold text-sm">{t('hero.securePayment')}</span>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-2xl md:rounded-3xl px-4 md:px-8 py-4 md:py-6 flex items-center justify-center shadow-lg hover:bg-white/30 transition-all duration-300">
-              <DollarSign className="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3 text-blue-400" />
-              <span className="font-semibold text-sm md:text-lg">{t('hero.bestPrices')}</span>
+            <div className="bg-white/20 backdrop-blur-sm rounded-xl px-4 py-2 flex items-center">
+              <DollarSign className="w-4 h-4 mr-2 text-blue-400" />
+              <span className="font-semibold text-sm">{t('hero.bestPrices')}</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section - Mobile Optimized */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h3 className="text-2xl md:text-4xl font-bold text-center text-gray-800 mb-2 md:mb-4">
-            {t('features.title')}
-          </h3>
-          <p className="text-base md:text-xl text-gray-600 text-center mb-8 md:mb-12 max-w-3xl mx-auto px-4">
-            {t('features.subtitle')}
-          </p>
+      {/* Products Section - Now First */}
+      <ProductGrid searchQuery={searchQuery} />
+
+      {/* Enhanced Features Section - Creative Bottom Design */}
+      <section className="py-16 md:py-20 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full"></div>
+          <div className="absolute bottom-10 right-10 w-24 h-24 bg-white rounded-full"></div>
+          <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-white rounded-full"></div>
+          <div className="absolute top-1/4 right-1/4 w-16 h-16 bg-white rounded-full"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-12 md:mb-16">
+            <h3 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+              {t('features.title')}
+            </h3>
+            <p className="text-lg md:text-xl opacity-90 max-w-3xl mx-auto">
+              {t('features.subtitle')}
+            </p>
+          </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             <div className="text-center group">
-              <div className="w-16 h-16 md:w-24 md:h-24 bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl md:rounded-3xl flex items-center justify-center mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Gamepad2 className="w-8 h-8 md:w-12 md:h-12 text-white" />
+              <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-r from-orange-500 to-red-600 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500 shadow-2xl">
+                <Gamepad2 className="w-12 h-12 md:w-16 md:h-16 text-white" />
               </div>
-              <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-3 md:mb-4">{t('features.gamingCards.title')}</h4>
-              <p className="text-gray-600 text-base md:text-lg leading-relaxed px-4">
+              <h4 className="text-2xl md:text-3xl font-bold mb-4">{t('features.gamingCards.title')}</h4>
+              <p className="text-lg opacity-90 leading-relaxed">
                 {t('features.gamingCards.description')}
               </p>
+              <div className="mt-6 flex justify-center space-x-2">
+                <div className="w-3 h-3 bg-orange-400 rounded-full animate-pulse"></div>
+                <div className="w-3 h-3 bg-red-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse delay-200"></div>
+              </div>
             </div>
             
             <div className="text-center group">
-              <div className="w-16 h-16 md:w-24 md:h-24 bg-gradient-to-r from-purple-500 to-blue-600 rounded-2xl md:rounded-3xl flex items-center justify-center mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Smartphone className="w-8 h-8 md:w-12 md:h-12 text-white" />
+              <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-r from-purple-500 to-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500 shadow-2xl">
+                <Smartphone className="w-12 h-12 md:w-16 md:h-16 text-white" />
               </div>
-              <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-3 md:mb-4">{t('features.mobileRecharge.title')}</h4>
-              <p className="text-gray-600 text-base md:text-lg leading-relaxed px-4">
+              <h4 className="text-2xl md:text-3xl font-bold mb-4">{t('features.mobileRecharge.title')}</h4>
+              <p className="text-lg opacity-90 leading-relaxed">
                 {t('features.mobileRecharge.description')}
               </p>
+              <div className="mt-6 flex justify-center space-x-2">
+                <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
+                <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-3 h-3 bg-indigo-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="mt-16 md:mt-20 text-center">
+            <h4 className="text-xl md:text-2xl font-bold mb-8">{t('footer.contactInfo')}</h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-4">
+                  <CheckCircle className="w-8 h-8 text-white" />
+                </div>
+                <h5 className="font-bold text-lg mb-2">100% {t('hero.securePayment')}</h5>
+                <p className="text-sm opacity-80">SSL encrypted transactions</p>
+              </div>
+              
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-4">
+                  <Clock className="w-8 h-8 text-white" />
+                </div>
+                <h5 className="font-bold text-lg mb-2">{t('hero.instantDelivery')}</h5>
+                <p className="text-sm opacity-80">Within seconds</p>
+              </div>
+              
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-2xl flex items-center justify-center mb-4">
+                  <Award className="w-8 h-8 text-white" />
+                </div>
+                <h5 className="font-bold text-lg mb-2">{t('footer.support24')}</h5>
+                <p className="text-sm opacity-80">Always here to help</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
-      <ProductGrid searchQuery={searchQuery} />
       
       <Cart 
         isOpen={isCartOpen}
@@ -115,8 +156,8 @@ const Index = () => {
         onOrderComplete={handleOrderComplete}
       />
 
-      {/* Footer - Mobile Optimized */}
-      <footer className="bg-gray-900 text-white py-12 md:py-16 mt-16 md:mt-20">
+      {/* Footer - Simplified */}
+      <footer className="bg-gray-900 text-white py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             <div className="text-center md:text-left">
