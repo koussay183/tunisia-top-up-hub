@@ -1,185 +1,174 @@
 
 import { useState, useMemo } from 'react';
+import { ProductCard } from './ProductCard';
 import { ProductSection } from './ProductSection';
 import { useProducts } from '../hooks/useProducts';
 import { Button } from '@/components/ui/button';
-import { Grid, Gamepad2, Smartphone, Loader2 } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Loader2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { defaultGames, defaultProviders } from '../data/defaultData';
 
 interface ProductGridProps {
   searchQuery: string;
 }
 
 export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
-  const [activeCategory, setActiveCategory] = useState<'all' | 'games' | 'recharge'>('all');
   const { products, loading, error } = useProducts();
+  const [selectedCategory, setSelectedCategory] = useState('all');
   const { t } = useTranslation();
 
   const filteredProducts = useMemo(() => {
     let filtered = products;
 
-    if (activeCategory === 'games') {
-      filtered = filtered.filter(product => 
-        ['freefire', 'pubg', 'codm'].includes(product.category)
-      );
-    } else if (activeCategory === 'recharge') {
-      filtered = filtered.filter(product => product.category === 'recharge');
+    if (selectedCategory !== 'all') {
+      if (selectedCategory === 'games') {
+        filtered = products.filter(product => 
+          ['freefire', 'pubg', 'codm', 'mobilelegends', 'efootball'].includes(product.category)
+        );
+      } else if (selectedCategory === 'recharge') {
+        filtered = products.filter(product => product.category === 'recharge');
+      }
     }
 
     if (searchQuery) {
       filtered = filtered.filter(product =>
         product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (product.provider && product.provider.toLowerCase().includes(searchQuery.toLowerCase()))
+        product.description.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
     return filtered;
-  }, [products, activeCategory, searchQuery]);
+  }, [products, selectedCategory, searchQuery]);
 
-  const groupedProducts = useMemo(() => {
-    const groups = {
-      games: {
-        freefire: filteredProducts.filter(p => p.category === 'freefire'),
-        pubg: filteredProducts.filter(p => p.category === 'pubg'),
-        codm: filteredProducts.filter(p => p.category === 'codm'),
-      },
-      recharge: {
-        ooredoo: filteredProducts.filter(p => p.provider === 'ooredoo'),
-        orange: filteredProducts.filter(p => p.provider === 'orange'),
-        tunisie_telecom: filteredProducts.filter(p => p.provider === 'tunisie_telecom'),
-      }
-    };
-    return groups;
+  // Group products by category for better display
+  const gameProducts = useMemo(() => {
+    const games = {};
+    filteredProducts
+      .filter(product => ['freefire', 'pubg', 'codm', 'mobilelegends', 'efootball'].includes(product.category))
+      .forEach(product => {
+        if (!games[product.category]) {
+          games[product.category] = [];
+        }
+        games[product.category].push(product);
+      });
+    return games;
   }, [filteredProducts]);
 
-  const getProviderLogo = (provider: string) => {
-    const logoUrls = {
-      'ooredoo': '/lovable-uploads/aec2e4d8-5f2c-496e-99f4-ebea34455e21.png',
-      'orange': '/lovable-uploads/f5768551-82db-43a9-8064-505e7e73598a.png',
-      'tunisie_telecom': '/lovable-uploads/06fe559e-ec75-468f-926f-624eb2846bef.png'
-    };
-    return logoUrls[provider as keyof typeof logoUrls];
+  const rechargeProducts = useMemo(() => {
+    const providers = {};
+    filteredProducts
+      .filter(product => product.category === 'recharge')
+      .forEach(product => {
+        const provider = product.provider || 'other';
+        if (!providers[provider]) {
+          providers[provider] = [];
+        }
+        providers[provider].push(product);
+      });
+    return providers;
+  }, [filteredProducts]);
+
+  const getGameInfo = (gameId: string) => {
+    return defaultGames.find(game => game.id === gameId);
   };
 
-  const getGameLogo = (game: string) => {
-    const logoUrls = {
-      'freefire': '/lovable-uploads/ecfd21b9-e010-4202-b8a6-1d431f8202ce.png',
-    };
-    return logoUrls[game as keyof typeof logoUrls];
+  const getProviderInfo = (providerId: string) => {
+    return defaultProviders.find(provider => provider.id === providerId);
   };
-
-  const categories = [
-    { id: 'all', label: t('categories.all'), icon: Grid },
-    { id: 'games', label: t('categories.games'), icon: Gamepad2 },
-    { id: 'recharge', label: t('categories.recharge'), icon: Smartphone }
-  ];
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="flex items-center justify-center">
-          <Loader2 className="w-6 h-6 md:w-8 md:h-8 animate-spin text-purple-600" />
-          <span className="ml-2 text-gray-600 text-sm md:text-base">{t('products.loading')}</span>
-        </div>
+      <div className="flex items-center justify-center py-12">
+        <Loader2 className="w-8 h-8 animate-spin text-purple-600" />
+        <span className="ml-2 text-lg">{t('products.loading')}</span>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="text-center text-red-600">
-          <p>Error loading products: {error}</p>
-        </div>
+      <div className="text-center py-8">
+        <p className="text-red-500 mb-4">{error}</p>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 md:py-12">
-      {/* Category Filters - Mobile Optimized */}
-      <div className="flex flex-wrap gap-2 md:gap-4 mb-8 md:mb-10 justify-center">
-        {categories.map((category) => {
-          const IconComponent = category.icon;
-          return (
-            <Button
-              key={category.id}
-              variant={activeCategory === category.id ? "default" : "outline"}
-              onClick={() => setActiveCategory(category.id as any)}
-              className={`px-4 md:px-8 py-2 md:py-4 rounded-xl md:rounded-2xl transition-all text-sm md:text-base font-semibold shadow-lg ${
-                activeCategory === category.id
-                  ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-purple-200 border-0 transform scale-105'
-                  : 'border-2 border-purple-200 text-purple-700 hover:bg-purple-50 bg-white hover:border-purple-300 hover:shadow-md'
-              }`}
-            >
-              <IconComponent className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3" />
-              <span className="hidden sm:inline">{category.label}</span>
-              <span className="sm:hidden">{category.label.split(' ')[0]}</span>
-            </Button>
-          );
-        })}
+    <section className="py-16 bg-gradient-to-br from-slate-50 to-purple-50">
+      <div className="container mx-auto px-4">
+        <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="mb-8">
+          <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto">
+            <TabsTrigger value="all">{t('categories.all')}</TabsTrigger>
+            <TabsTrigger value="games">Recharge Jeux</TabsTrigger>
+            <TabsTrigger value="recharge">Recharge Internet</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="all" className="space-y-12">
+            {/* Gaming sections */}
+            {Object.entries(gameProducts).map(([gameId, gameProductList]) => {
+              const gameInfo = getGameInfo(gameId);
+              return (
+                <ProductSection
+                  key={gameId}
+                  title={gameInfo?.name || gameId}
+                  products={gameProductList}
+                  logo={gameInfo?.logo}
+                />
+              );
+            })}
+            
+            {/* Recharge sections */}
+            {Object.entries(rechargeProducts).map(([providerId, providerProducts]) => {
+              const providerInfo = getProviderInfo(providerId);
+              return (
+                <ProductSection
+                  key={providerId}
+                  title={providerInfo?.name || providerId}
+                  products={providerProducts}
+                  logo={providerInfo?.logo}
+                />
+              );
+            })}
+          </TabsContent>
+
+          <TabsContent value="games" className="space-y-12">
+            {Object.entries(gameProducts).map(([gameId, gameProductList]) => {
+              const gameInfo = getGameInfo(gameId);
+              return (
+                <ProductSection
+                  key={gameId}
+                  title={gameInfo?.name || gameId}
+                  products={gameProductList}
+                  logo={gameInfo?.logo}
+                />
+              );
+            })}
+          </TabsContent>
+
+          <TabsContent value="recharge" className="space-y-12">
+            {Object.entries(rechargeProducts).map(([providerId, providerProducts]) => {
+              const providerInfo = getProviderInfo(providerId);
+              return (
+                <ProductSection
+                  key={providerId}
+                  title={providerInfo?.name || providerId}
+                  products={providerProducts}
+                  logo={providerInfo?.logo}
+                />
+              );
+            })}
+          </TabsContent>
+        </Tabs>
+
+        {filteredProducts.length === 0 && (
+          <div className="text-center py-12">
+            <div className="text-gray-400 text-6xl mb-4">🎮</div>
+            <h3 className="text-xl font-semibold text-gray-600 mb-2">{t('products.noProducts')}</h3>
+            <p className="text-gray-500">{t('products.noProductsDesc')}</p>
+          </div>
+        )}
       </div>
-
-      {/* Mobile Recharge Sections */}
-      {(activeCategory === 'all' || activeCategory === 'recharge') && (
-        <div className="mb-16">
-          <h1 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Mobile Recharge
-          </h1>
-          
-          <ProductSection
-            title="Ooredoo"
-            products={groupedProducts.recharge.ooredoo}
-            logo={getProviderLogo('ooredoo')}
-          />
-          
-          <ProductSection
-            title="Orange"
-            products={groupedProducts.recharge.orange}
-            logo={getProviderLogo('orange')}
-          />
-          
-          <ProductSection
-            title="Tunisie Telecom"
-            products={groupedProducts.recharge.tunisie_telecom}
-            logo={getProviderLogo('tunisie_telecom')}
-          />
-        </div>
-      )}
-
-      {/* Gaming Sections */}
-      {(activeCategory === 'all' || activeCategory === 'games') && (
-        <div className="mb-16">
-          <h1 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">
-            Gaming Cards
-          </h1>
-          
-          <ProductSection
-            title="Free Fire"
-            products={groupedProducts.games.freefire}
-            logo={getGameLogo('freefire')}
-          />
-          
-          <ProductSection
-            title="PUBG Mobile"
-            products={groupedProducts.games.pubg}
-          />
-          
-          <ProductSection
-            title="Call of Duty Mobile"
-            products={groupedProducts.games.codm}
-          />
-        </div>
-      )}
-
-      {filteredProducts.length === 0 && (
-        <div className="text-center py-16 md:py-20">
-          <Grid className="w-16 h-16 md:w-20 md:h-20 mx-auto text-gray-300 mb-4 md:mb-6" />
-          <h3 className="text-xl md:text-2xl font-semibold text-gray-500 mb-2 md:mb-3">{t('products.noProducts')}</h3>
-          <p className="text-gray-400 text-base md:text-lg">{t('products.noProductsDesc')}</p>
-        </div>
-      )}
-    </div>
+    </section>
   );
 };

@@ -30,14 +30,19 @@ export const CheckoutForm = ({ isOpen, onClose, onOrderComplete }: CheckoutFormP
     email: ''
   });
   const [gameId, setGameId] = useState('');
+  const [gameEmail, setGameEmail] = useState('');
+  const [gamePassword, setGamePassword] = useState('');
   const [paymentScreenshot, setPaymentScreenshot] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>('');
   const { t } = useTranslation();
 
   // Check if there are gaming products in the cart
   const hasGamingProducts = cartItems.some(item => 
-    ['freefire', 'pubg', 'codm'].includes(item.category)
+    ['freefire', 'pubg', 'codm', 'mobilelegends', 'efootball'].includes(item.category)
   );
+
+  // Check if there are eFootball products in the cart
+  const hasEFootballProducts = cartItems.some(item => item.category === 'efootball');
 
   const formatPrice = (price: number) => {
     return `${(price / 1000).toFixed(1)}DT`;
@@ -76,13 +81,31 @@ export const CheckoutForm = ({ isOpen, onClose, onOrderComplete }: CheckoutFormP
       });
       return false;
     }
-    if (hasGamingProducts && !gameId.trim()) {
+    if (hasGamingProducts && !hasEFootballProducts && !gameId.trim()) {
       toast({
         title: "Error",
         description: "Please enter your Game Player ID",
         variant: "destructive"
       });
       return false;
+    }
+    if (hasEFootballProducts) {
+      if (!gameEmail.trim()) {
+        toast({
+          title: "Error",
+          description: "Please enter your Konami account email",
+          variant: "destructive"
+        });
+        return false;
+      }
+      if (!gamePassword.trim()) {
+        toast({
+          title: "Error",
+          description: "Please enter your Konami account password",
+          variant: "destructive"
+        });
+        return false;
+      }
     }
     if (!paymentScreenshot) {
       toast({
@@ -112,7 +135,9 @@ export const CheckoutForm = ({ isOpen, onClose, onOrderComplete }: CheckoutFormP
         customerName: formData.customerName,
         phone: formData.phone,
         email: formData.email || '',
-        gameId: hasGamingProducts ? gameId : '',
+        gameId: hasGamingProducts && !hasEFootballProducts ? gameId : '',
+        gameEmail: hasEFootballProducts ? gameEmail : '',
+        gamePassword: hasEFootballProducts ? gamePassword : '',
         items: cartItems,
         total: getTotalPrice(),
         paymentScreenshot: screenshotUrl,
@@ -131,6 +156,8 @@ export const CheckoutForm = ({ isOpen, onClose, onOrderComplete }: CheckoutFormP
       clearCart();
       setFormData({ customerName: '', phone: '', email: '' });
       setGameId('');
+      setGameEmail('');
+      setGamePassword('');
       setPaymentScreenshot(null);
       setPreviewUrl('');
       
@@ -153,7 +180,7 @@ export const CheckoutForm = ({ isOpen, onClose, onOrderComplete }: CheckoutFormP
 
   // Get the first gaming product's category for the GameIdInput
   const firstGamingProduct = cartItems.find(item => 
-    ['freefire', 'pubg', 'codm'].includes(item.category)
+    ['freefire', 'pubg', 'codm', 'mobilelegends', 'efootball'].includes(item.category)
   );
 
   return (
@@ -273,6 +300,10 @@ export const CheckoutForm = ({ isOpen, onClose, onOrderComplete }: CheckoutFormP
               <GameIdInput 
                 gameId={gameId}
                 setGameId={setGameId}
+                gameEmail={gameEmail}
+                setGameEmail={setGameEmail}
+                gamePassword={gamePassword}
+                setGamePassword={setGamePassword}
                 category={firstGamingProduct.category}
               />
             )}

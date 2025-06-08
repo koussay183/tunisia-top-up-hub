@@ -1,4 +1,3 @@
-
 import { Product } from '../types';
 
 export const defaultGames = [
@@ -22,6 +21,20 @@ export const defaultGames = [
     logo: '',
     description: 'Call of Duty Mobile',
     category: 'fps'
+  },
+  {
+    id: 'mobilelegends',
+    name: 'Mobile Legends',
+    logo: '/lovable-uploads/17accab7-7b82-456f-92e9-9a149823464b.png',
+    description: 'Mobile Legends Bang Bang',
+    category: 'moba'
+  },
+  {
+    id: 'efootball',
+    name: 'eFootball',
+    logo: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    description: 'eFootball Mobile',
+    category: 'sports'
   }
 ];
 
@@ -113,7 +126,144 @@ export const defaultProducts: Product[] = [
     description: 'Call of Duty Mobile 400 CP - Instant delivery',
     gameId: 'codm'
   },
-  // Ooredoo Recharge Packages
+  // Mobile Legends
+  {
+    id: 'ml-278',
+    name: '278 Diamonds',
+    price: 20000,
+    category: 'mobilelegends',
+    image: '/lovable-uploads/17accab7-7b82-456f-92e9-9a149823464b.png',
+    description: 'Mobile Legends 278 Diamonds - Instant delivery',
+    gameId: 'mobilelegends'
+  },
+  {
+    id: 'ml-571',
+    name: '571 Diamonds',
+    price: 39000,
+    category: 'mobilelegends',
+    image: '/lovable-uploads/17accab7-7b82-456f-92e9-9a149823464b.png',
+    description: 'Mobile Legends 571 Diamonds - Instant delivery',
+    gameId: 'mobilelegends'
+  },
+  {
+    id: 'ml-1192',
+    name: '1192 Diamonds',
+    price: 80000,
+    category: 'mobilelegends',
+    image: '/lovable-uploads/17accab7-7b82-456f-92e9-9a149823464b.png',
+    description: 'Mobile Legends 1192 Diamonds - Instant delivery',
+    gameId: 'mobilelegends'
+  },
+  {
+    id: 'ml-1788',
+    name: '1788 Diamonds',
+    price: 115000,
+    category: 'mobilelegends',
+    image: '/lovable-uploads/17accab7-7b82-456f-92e9-9a149823464b.png',
+    description: 'Mobile Legends 1788 Diamonds - Instant delivery',
+    gameId: 'mobilelegends'
+  },
+  {
+    id: 'ml-3007',
+    name: '3007 Diamonds',
+    price: 185000,
+    category: 'mobilelegends',
+    image: '/lovable-uploads/17accab7-7b82-456f-92e9-9a149823464b.png',
+    description: 'Mobile Legends 3007 Diamonds - Instant delivery',
+    gameId: 'mobilelegends'
+  },
+  {
+    id: 'ml-3576',
+    name: '3576 Diamonds',
+    price: 220000,
+    category: 'mobilelegends',
+    image: '/lovable-uploads/17accab7-7b82-456f-92e9-9a149823464b.png',
+    description: 'Mobile Legends 3576 Diamonds - Instant delivery',
+    gameId: 'mobilelegends'
+  },
+  // eFootball
+  {
+    id: 'ef-130',
+    name: '130 Coins',
+    price: 5000,
+    category: 'efootball',
+    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    description: 'eFootball 130 Coins - Instant delivery',
+    gameId: 'efootball'
+  },
+  {
+    id: 'ef-300',
+    name: '300 Coins',
+    price: 10000,
+    category: 'efootball',
+    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    description: 'eFootball 300 Coins - Instant delivery',
+    gameId: 'efootball'
+  },
+  {
+    id: 'ef-550',
+    name: '550 Coins',
+    price: 20000,
+    category: 'efootball',
+    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    description: 'eFootball 550 Coins - Instant delivery',
+    gameId: 'efootball'
+  },
+  {
+    id: 'ef-750',
+    name: '750 Coins',
+    price: 25000,
+    category: 'efootball',
+    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    description: 'eFootball 750 Coins - Instant delivery',
+    gameId: 'efootball'
+  },
+  {
+    id: 'ef-1040',
+    name: '1040 Coins',
+    price: 35000,
+    category: 'efootball',
+    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    description: 'eFootball 1040 Coins - Instant delivery',
+    gameId: 'efootball'
+  },
+  {
+    id: 'ef-2130',
+    name: '2130 Coins',
+    price: 65000,
+    category: 'efootball',
+    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    description: 'eFootball 2130 Coins - Instant delivery',
+    gameId: 'efootball'
+  },
+  {
+    id: 'ef-3250',
+    name: '3250 Coins',
+    price: 100000,
+    category: 'efootball',
+    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    description: 'eFootball 3250 Coins - Instant delivery',
+    gameId: 'efootball'
+  },
+  {
+    id: 'ef-5700',
+    name: '5700 Coins',
+    price: 155000,
+    category: 'efootball',
+    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    description: 'eFootball 5700 Coins - Instant delivery',
+    gameId: 'efootball'
+  },
+  {
+    id: 'ef-12800',
+    name: '12800 Coins',
+    price: 345000,
+    category: 'efootball',
+    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    description: 'eFootball 12800 Coins - Instant delivery',
+    gameId: 'efootball'
+  },
+  // ... keep existing code (Ooredoo, Orange, Tunisie Telecom recharge packages)
   {
     id: 'ooredoo-25gb',
     name: '25GB Package',

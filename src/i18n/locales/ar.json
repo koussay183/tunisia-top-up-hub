@@ -27,8 +27,8 @@
   },
   "categories": {
     "all": "جميع المنتجات",
-    "games": "بطاقات الألعاب",
-    "recharge": "شحن الهاتف"
+    "games": "Recharge Jeux",
+    "recharge": "Recharge Internet"
   },
   "products": {
     "popular": "شائع",
@@ -38,6 +38,7 @@
     "credits": "نقاط",
     "uc": "UC",
     "cp": "CP",
+    "coins": "عملة",
     "package": "باقة",
     "noProducts": "لم يتم العثور على منتجات",
     "noProductsDesc": "جرب تعديل البحث أو معايير التصفية",
@@ -124,6 +125,16 @@
       "title": "معرف Call of Duty Mobile",
       "placeholder": "أدخل معرف Call of Duty Mobile UID",
       "description": "أدخل معرف اللاعب الخاص بك في اللعبة لاستلام مشترياتك"
+    },
+    "mobilelegends": {
+      "title": "معرف لاعب Mobile Legends",
+      "placeholder": "أدخل معرف لاعب Mobile Legends",
+      "description": "أدخل معرف اللاعب الخاص بك في اللعبة لاستلام مشترياتك"
+    },
+    "efootball": {
+      "title": "حساب Konami eFootball",
+      "placeholder": "أدخل بيانات حساب Konami",
+      "description": "أدخل بيانات حساب Konami الخاص بك لاستلام مشترياتك"
     }
   }
 }
