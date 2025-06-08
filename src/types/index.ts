@@ -36,6 +36,7 @@ export interface Order {
   customerName: string;
   phone: string;
   email?: string;
+  gameId?: string; // For game purchases
   items: CartItem[];
   total: number;
   paymentScreenshot?: string;

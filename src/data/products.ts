@@ -169,7 +169,7 @@ export const products: Product[] = [
     image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/orange-1000gb',
     description: 'Orange 1000GB Data Package - 1 year validity'
   },
-  // Tunisie Telecom Recharge
+  // Tunisie Telecom Recharge - Different pricing structure
   {
     id: 'tt-25gb',
     name: 'Tunisie Telecom 25GB',
@@ -181,34 +181,24 @@ export const products: Product[] = [
     description: 'Tunisie Telecom 25GB Data Package - 30 days validity'
   },
   {
-    id: 'tt-30gb',
-    name: 'Tunisie Telecom 30GB',
-    price: 35000,
+    id: 'tt-60gb',
+    name: 'Tunisie Telecom 60GB',
+    price: 60000,
     category: 'recharge',
     provider: 'tunisie_telecom',
-    data: '30GB',
-    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/tt-30gb',
-    description: 'Tunisie Telecom 30GB Data Package - 30 days validity'
+    data: '60GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/tt-60gb',
+    description: 'Tunisie Telecom 60GB Data Package - 30 days validity'
   },
   {
-    id: 'tt-75gb',
-    name: 'Tunisie Telecom 75GB',
-    price: 65000,
+    id: 'tt-110gb',
+    name: 'Tunisie Telecom 110GB',
+    price: 80000,
     category: 'recharge',
     provider: 'tunisie_telecom',
-    data: '75GB',
-    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/tt-75gb',
-    description: 'Tunisie Telecom 75GB Data Package - 60 days validity'
-  },
-  {
-    id: 'tt-100gb',
-    name: 'Tunisie Telecom 100GB',
-    price: 75000,
-    category: 'recharge',
-    provider: 'tunisie_telecom',
-    data: '100GB',
-    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/tt-100gb',
-    description: 'Tunisie Telecom 100GB Data Package - 90 days validity'
+    data: '110GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/tt-110gb',
+    description: 'Tunisie Telecom 110GB Data Package - 60 days validity'
   },
   {
     id: 'tt-200gb',
@@ -218,26 +208,6 @@ export const products: Product[] = [
     provider: 'tunisie_telecom',
     data: '200GB',
     image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/tt-200gb',
-    description: 'Tunisie Telecom 200GB Data Package - 120 days validity'
-  },
-  {
-    id: 'tt-500gb',
-    name: 'Tunisie Telecom 500GB',
-    price: 250000,
-    category: 'recharge',
-    provider: 'tunisie_telecom',
-    data: '500GB',
-    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/tt-500gb',
-    description: 'Tunisie Telecom 500GB Data Package - 5 months validity'
-  },
-  {
-    id: 'tt-1000gb',
-    name: 'Tunisie Telecom 1000GB',
-    price: 490000,
-    category: 'recharge',
-    provider: 'tunisie_telecom',
-    data: '1000GB',
-    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/tt-1000gb',
-    description: 'Tunisie Telecom 1000GB Data Package - 1 year validity'
+    description: 'Tunisie Telecom 200GB Data Package - 90 days validity'
   }
 ];

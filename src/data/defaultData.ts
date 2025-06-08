@@ -269,7 +269,7 @@ export const defaultProducts: Product[] = [
     description: 'Orange 1000GB Data Package - 1 year validity',
     providerId: 'orange'
   },
-  // Tunisie Telecom Recharge Packages
+  // Tunisie Telecom Recharge Packages - Different pricing structure
   {
     id: 'tt-25gb',
     name: '25GB Package',
@@ -282,36 +282,25 @@ export const defaultProducts: Product[] = [
     providerId: 'tunisie_telecom'
   },
   {
-    id: 'tt-30gb',
-    name: '30GB Package',
-    price: 35000,
+    id: 'tt-60gb',
+    name: '60GB Package',
+    price: 60000,
     category: 'recharge',
     provider: 'tunisie_telecom',
-    data: '30GB',
+    data: '60GB',
     image: '/lovable-uploads/06fe559e-ec75-468f-926f-624eb2846bef.png',
-    description: 'Tunisie Telecom 30GB Data Package - 30 days validity',
+    description: 'Tunisie Telecom 60GB Data Package - 30 days validity',
     providerId: 'tunisie_telecom'
   },
   {
-    id: 'tt-75gb',
-    name: '75GB Package',
-    price: 65000,
+    id: 'tt-110gb',
+    name: '110GB Package',
+    price: 80000,
     category: 'recharge',
     provider: 'tunisie_telecom',
-    data: '75GB',
+    data: '110GB',
     image: '/lovable-uploads/06fe559e-ec75-468f-926f-624eb2846bef.png',
-    description: 'Tunisie Telecom 75GB Data Package - 60 days validity',
-    providerId: 'tunisie_telecom'
-  },
-  {
-    id: 'tt-100gb',
-    name: '100GB Package',
-    price: 75000,
-    category: 'recharge',
-    provider: 'tunisie_telecom',
-    data: '100GB',
-    image: '/lovable-uploads/06fe559e-ec75-468f-926f-624eb2846bef.png',
-    description: 'Tunisie Telecom 100GB Data Package - 90 days validity',
+    description: 'Tunisie Telecom 110GB Data Package - 60 days validity',
     providerId: 'tunisie_telecom'
   },
   {
@@ -322,29 +311,7 @@ export const defaultProducts: Product[] = [
     provider: 'tunisie_telecom',
     data: '200GB',
     image: '/lovable-uploads/06fe559e-ec75-468f-926f-624eb2846bef.png',
-    description: 'Tunisie Telecom 200GB Data Package - 120 days validity',
-    providerId: 'tunisie_telecom'
-  },
-  {
-    id: 'tt-500gb',
-    name: '500GB Package',
-    price: 250000,
-    category: 'recharge',
-    provider: 'tunisie_telecom',
-    data: '500GB',
-    image: '/lovable-uploads/06fe559e-ec75-468f-926f-624eb2846bef.png',
-    description: 'Tunisie Telecom 500GB Data Package - 5 months validity',
-    providerId: 'tunisie_telecom'
-  },
-  {
-    id: 'tt-1000gb',
-    name: '1000GB Package',
-    price: 490000,
-    category: 'recharge',
-    provider: 'tunisie_telecom',
-    data: '1000GB',
-    image: '/lovable-uploads/06fe559e-ec75-468f-926f-624eb2846bef.png',
-    description: 'Tunisie Telecom 1000GB Data Package - 1 year validity',
+    description: 'Tunisie Telecom 200GB Data Package - 90 days validity',
     providerId: 'tunisie_telecom'
   }
 ];
