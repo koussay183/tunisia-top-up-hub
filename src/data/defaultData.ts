@@ -113,11 +113,11 @@ export const defaultProducts: Product[] = [
     description: 'Call of Duty Mobile 400 CP - Instant delivery',
     gameId: 'codm'
   },
-  // Ooredoo Recharge
+  // Ooredoo Recharge Packages
   {
     id: 'ooredoo-25gb',
     name: '25GB Package',
-    price: 15000,
+    price: 30000,
     category: 'recharge',
     provider: 'ooredoo',
     data: '25GB',
@@ -126,21 +126,76 @@ export const defaultProducts: Product[] = [
     providerId: 'ooredoo'
   },
   {
-    id: 'ooredoo-50gb',
-    name: '50GB Package',
-    price: 25000,
+    id: 'ooredoo-30gb',
+    name: '30GB Package',
+    price: 35000,
     category: 'recharge',
     provider: 'ooredoo',
-    data: '50GB',
+    data: '30GB',
     image: '/lovable-uploads/aec2e4d8-5f2c-496e-99f4-ebea34455e21.png',
-    description: 'Ooredoo 50GB Data Package - 30 days validity',
+    description: 'Ooredoo 30GB Data Package - 30 days validity',
     providerId: 'ooredoo'
   },
-  // Orange Recharge
+  {
+    id: 'ooredoo-75gb',
+    name: '75GB Package',
+    price: 65000,
+    category: 'recharge',
+    provider: 'ooredoo',
+    data: '75GB',
+    image: '/lovable-uploads/aec2e4d8-5f2c-496e-99f4-ebea34455e21.png',
+    description: 'Ooredoo 75GB Data Package - 60 days validity',
+    providerId: 'ooredoo'
+  },
+  {
+    id: 'ooredoo-100gb',
+    name: '100GB Package',
+    price: 75000,
+    category: 'recharge',
+    provider: 'ooredoo',
+    data: '100GB',
+    image: '/lovable-uploads/aec2e4d8-5f2c-496e-99f4-ebea34455e21.png',
+    description: 'Ooredoo 100GB Data Package - 90 days validity',
+    providerId: 'ooredoo'
+  },
+  {
+    id: 'ooredoo-200gb',
+    name: '200GB Package',
+    price: 100000,
+    category: 'recharge',
+    provider: 'ooredoo',
+    data: '200GB',
+    image: '/lovable-uploads/aec2e4d8-5f2c-496e-99f4-ebea34455e21.png',
+    description: 'Ooredoo 200GB Data Package - 120 days validity',
+    providerId: 'ooredoo'
+  },
+  {
+    id: 'ooredoo-500gb',
+    name: '500GB Package',
+    price: 250000,
+    category: 'recharge',
+    provider: 'ooredoo',
+    data: '500GB',
+    image: '/lovable-uploads/aec2e4d8-5f2c-496e-99f4-ebea34455e21.png',
+    description: 'Ooredoo 500GB Data Package - 5 months validity',
+    providerId: 'ooredoo'
+  },
+  {
+    id: 'ooredoo-1000gb',
+    name: '1000GB Package',
+    price: 490000,
+    category: 'recharge',
+    provider: 'ooredoo',
+    data: '1000GB',
+    image: '/lovable-uploads/aec2e4d8-5f2c-496e-99f4-ebea34455e21.png',
+    description: 'Ooredoo 1000GB Data Package - 1 year validity',
+    providerId: 'ooredoo'
+  },
+  // Orange Recharge Packages
   {
     id: 'orange-25gb',
     name: '25GB Package',
-    price: 15500,
+    price: 30000,
     category: 'recharge',
     provider: 'orange',
     data: '25GB',
@@ -149,21 +204,76 @@ export const defaultProducts: Product[] = [
     providerId: 'orange'
   },
   {
-    id: 'orange-50gb',
-    name: '50GB Package',
-    price: 26000,
+    id: 'orange-30gb',
+    name: '30GB Package',
+    price: 35000,
     category: 'recharge',
     provider: 'orange',
-    data: '50GB',
+    data: '30GB',
     image: '/lovable-uploads/f5768551-82db-43a9-8064-505e7e73598a.png',
-    description: 'Orange 50GB Data Package - 30 days validity',
+    description: 'Orange 30GB Data Package - 30 days validity',
     providerId: 'orange'
   },
-  // Tunisie Telecom Recharge
+  {
+    id: 'orange-75gb',
+    name: '75GB Package',
+    price: 65000,
+    category: 'recharge',
+    provider: 'orange',
+    data: '75GB',
+    image: '/lovable-uploads/f5768551-82db-43a9-8064-505e7e73598a.png',
+    description: 'Orange 75GB Data Package - 60 days validity',
+    providerId: 'orange'
+  },
+  {
+    id: 'orange-100gb',
+    name: '100GB Package',
+    price: 75000,
+    category: 'recharge',
+    provider: 'orange',
+    data: '100GB',
+    image: '/lovable-uploads/f5768551-82db-43a9-8064-505e7e73598a.png',
+    description: 'Orange 100GB Data Package - 90 days validity',
+    providerId: 'orange'
+  },
+  {
+    id: 'orange-200gb',
+    name: '200GB Package',
+    price: 100000,
+    category: 'recharge',
+    provider: 'orange',
+    data: '200GB',
+    image: '/lovable-uploads/f5768551-82db-43a9-8064-505e7e73598a.png',
+    description: 'Orange 200GB Data Package - 120 days validity',
+    providerId: 'orange'
+  },
+  {
+    id: 'orange-500gb',
+    name: '500GB Package',
+    price: 250000,
+    category: 'recharge',
+    provider: 'orange',
+    data: '500GB',
+    image: '/lovable-uploads/f5768551-82db-43a9-8064-505e7e73598a.png',
+    description: 'Orange 500GB Data Package - 5 months validity',
+    providerId: 'orange'
+  },
+  {
+    id: 'orange-1000gb',
+    name: '1000GB Package',
+    price: 490000,
+    category: 'recharge',
+    provider: 'orange',
+    data: '1000GB',
+    image: '/lovable-uploads/f5768551-82db-43a9-8064-505e7e73598a.png',
+    description: 'Orange 1000GB Data Package - 1 year validity',
+    providerId: 'orange'
+  },
+  // Tunisie Telecom Recharge Packages
   {
     id: 'tt-25gb',
     name: '25GB Package',
-    price: 14500,
+    price: 30000,
     category: 'recharge',
     provider: 'tunisie_telecom',
     data: '25GB',
@@ -172,14 +282,69 @@ export const defaultProducts: Product[] = [
     providerId: 'tunisie_telecom'
   },
   {
-    id: 'tt-50gb',
-    name: '50GB Package',
-    price: 24500,
+    id: 'tt-30gb',
+    name: '30GB Package',
+    price: 35000,
     category: 'recharge',
     provider: 'tunisie_telecom',
-    data: '50GB',
+    data: '30GB',
     image: '/lovable-uploads/06fe559e-ec75-468f-926f-624eb2846bef.png',
-    description: 'Tunisie Telecom 50GB Data Package - 30 days validity',
+    description: 'Tunisie Telecom 30GB Data Package - 30 days validity',
+    providerId: 'tunisie_telecom'
+  },
+  {
+    id: 'tt-75gb',
+    name: '75GB Package',
+    price: 65000,
+    category: 'recharge',
+    provider: 'tunisie_telecom',
+    data: '75GB',
+    image: '/lovable-uploads/06fe559e-ec75-468f-926f-624eb2846bef.png',
+    description: 'Tunisie Telecom 75GB Data Package - 60 days validity',
+    providerId: 'tunisie_telecom'
+  },
+  {
+    id: 'tt-100gb',
+    name: '100GB Package',
+    price: 75000,
+    category: 'recharge',
+    provider: 'tunisie_telecom',
+    data: '100GB',
+    image: '/lovable-uploads/06fe559e-ec75-468f-926f-624eb2846bef.png',
+    description: 'Tunisie Telecom 100GB Data Package - 90 days validity',
+    providerId: 'tunisie_telecom'
+  },
+  {
+    id: 'tt-200gb',
+    name: '200GB Package',
+    price: 100000,
+    category: 'recharge',
+    provider: 'tunisie_telecom',
+    data: '200GB',
+    image: '/lovable-uploads/06fe559e-ec75-468f-926f-624eb2846bef.png',
+    description: 'Tunisie Telecom 200GB Data Package - 120 days validity',
+    providerId: 'tunisie_telecom'
+  },
+  {
+    id: 'tt-500gb',
+    name: '500GB Package',
+    price: 250000,
+    category: 'recharge',
+    provider: 'tunisie_telecom',
+    data: '500GB',
+    image: '/lovable-uploads/06fe559e-ec75-468f-926f-624eb2846bef.png',
+    description: 'Tunisie Telecom 500GB Data Package - 5 months validity',
+    providerId: 'tunisie_telecom'
+  },
+  {
+    id: 'tt-1000gb',
+    name: '1000GB Package',
+    price: 490000,
+    category: 'recharge',
+    provider: 'tunisie_telecom',
+    data: '1000GB',
+    image: '/lovable-uploads/06fe559e-ec75-468f-926f-624eb2846bef.png',
+    description: 'Tunisie Telecom 1000GB Data Package - 1 year validity',
     providerId: 'tunisie_telecom'
   }
 ];

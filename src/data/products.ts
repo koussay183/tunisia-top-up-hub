@@ -31,7 +31,7 @@ export const products: Product[] = [
   {
     id: 'ooredoo-25gb',
     name: 'Ooredoo 25GB',
-    price: 15000,
+    price: 30000,
     category: 'recharge',
     provider: 'ooredoo',
     data: '25GB',
@@ -39,30 +39,70 @@ export const products: Product[] = [
     description: 'Ooredoo 25GB Data Package - 30 days validity'
   },
   {
-    id: 'ooredoo-50gb',
-    name: 'Ooredoo 50GB',
-    price: 25000,
+    id: 'ooredoo-30gb',
+    name: 'Ooredoo 30GB',
+    price: 35000,
     category: 'recharge',
     provider: 'ooredoo',
-    data: '50GB',
-    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/ooredoo-50gb',
-    description: 'Ooredoo 50GB Data Package - 30 days validity'
+    data: '30GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/ooredoo-30gb',
+    description: 'Ooredoo 30GB Data Package - 30 days validity'
+  },
+  {
+    id: 'ooredoo-75gb',
+    name: 'Ooredoo 75GB',
+    price: 65000,
+    category: 'recharge',
+    provider: 'ooredoo',
+    data: '75GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/ooredoo-75gb',
+    description: 'Ooredoo 75GB Data Package - 60 days validity'
   },
   {
     id: 'ooredoo-100gb',
     name: 'Ooredoo 100GB',
-    price: 45000,
+    price: 75000,
     category: 'recharge',
     provider: 'ooredoo',
     data: '100GB',
     image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/ooredoo-100gb',
-    description: 'Ooredoo 100GB Data Package - 30 days validity'
+    description: 'Ooredoo 100GB Data Package - 90 days validity'
+  },
+  {
+    id: 'ooredoo-200gb',
+    name: 'Ooredoo 200GB',
+    price: 100000,
+    category: 'recharge',
+    provider: 'ooredoo',
+    data: '200GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/ooredoo-200gb',
+    description: 'Ooredoo 200GB Data Package - 120 days validity'
+  },
+  {
+    id: 'ooredoo-500gb',
+    name: 'Ooredoo 500GB',
+    price: 250000,
+    category: 'recharge',
+    provider: 'ooredoo',
+    data: '500GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/ooredoo-500gb',
+    description: 'Ooredoo 500GB Data Package - 5 months validity'
+  },
+  {
+    id: 'ooredoo-1000gb',
+    name: 'Ooredoo 1000GB',
+    price: 490000,
+    category: 'recharge',
+    provider: 'ooredoo',
+    data: '1000GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/ooredoo-1000gb',
+    description: 'Ooredoo 1000GB Data Package - 1 year validity'
   },
   // Orange Recharge
   {
     id: 'orange-25gb',
     name: 'Orange 25GB',
-    price: 15500,
+    price: 30000,
     category: 'recharge',
     provider: 'orange',
     data: '25GB',
@@ -70,30 +110,70 @@ export const products: Product[] = [
     description: 'Orange 25GB Data Package - 30 days validity'
   },
   {
-    id: 'orange-50gb',
-    name: 'Orange 50GB',
-    price: 26000,
+    id: 'orange-30gb',
+    name: 'Orange 30GB',
+    price: 35000,
     category: 'recharge',
     provider: 'orange',
-    data: '50GB',
-    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/orange-50gb',
-    description: 'Orange 50GB Data Package - 30 days validity'
+    data: '30GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/orange-30gb',
+    description: 'Orange 30GB Data Package - 30 days validity'
+  },
+  {
+    id: 'orange-75gb',
+    name: 'Orange 75GB',
+    price: 65000,
+    category: 'recharge',
+    provider: 'orange',
+    data: '75GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/orange-75gb',
+    description: 'Orange 75GB Data Package - 60 days validity'
   },
   {
     id: 'orange-100gb',
     name: 'Orange 100GB',
-    price: 47000,
+    price: 75000,
     category: 'recharge',
     provider: 'orange',
     data: '100GB',
     image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/orange-100gb',
-    description: 'Orange 100GB Data Package - 30 days validity'
+    description: 'Orange 100GB Data Package - 90 days validity'
+  },
+  {
+    id: 'orange-200gb',
+    name: 'Orange 200GB',
+    price: 100000,
+    category: 'recharge',
+    provider: 'orange',
+    data: '200GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/orange-200gb',
+    description: 'Orange 200GB Data Package - 120 days validity'
+  },
+  {
+    id: 'orange-500gb',
+    name: 'Orange 500GB',
+    price: 250000,
+    category: 'recharge',
+    provider: 'orange',
+    data: '500GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/orange-500gb',
+    description: 'Orange 500GB Data Package - 5 months validity'
+  },
+  {
+    id: 'orange-1000gb',
+    name: 'Orange 1000GB',
+    price: 490000,
+    category: 'recharge',
+    provider: 'orange',
+    data: '1000GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/orange-1000gb',
+    description: 'Orange 1000GB Data Package - 1 year validity'
   },
   // Tunisie Telecom Recharge
   {
     id: 'tt-25gb',
     name: 'Tunisie Telecom 25GB',
-    price: 14500,
+    price: 30000,
     category: 'recharge',
     provider: 'tunisie_telecom',
     data: '25GB',
@@ -101,23 +181,63 @@ export const products: Product[] = [
     description: 'Tunisie Telecom 25GB Data Package - 30 days validity'
   },
   {
-    id: 'tt-50gb',
-    name: 'Tunisie Telecom 50GB',
-    price: 24500,
+    id: 'tt-30gb',
+    name: 'Tunisie Telecom 30GB',
+    price: 35000,
     category: 'recharge',
     provider: 'tunisie_telecom',
-    data: '50GB',
-    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/tt-50gb',
-    description: 'Tunisie Telecom 50GB Data Package - 30 days validity'
+    data: '30GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/tt-30gb',
+    description: 'Tunisie Telecom 30GB Data Package - 30 days validity'
+  },
+  {
+    id: 'tt-75gb',
+    name: 'Tunisie Telecom 75GB',
+    price: 65000,
+    category: 'recharge',
+    provider: 'tunisie_telecom',
+    data: '75GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/tt-75gb',
+    description: 'Tunisie Telecom 75GB Data Package - 60 days validity'
   },
   {
     id: 'tt-100gb',
     name: 'Tunisie Telecom 100GB',
-    price: 44000,
+    price: 75000,
     category: 'recharge',
     provider: 'tunisie_telecom',
     data: '100GB',
     image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/tt-100gb',
-    description: 'Tunisie Telecom 100GB Data Package - 30 days validity'
+    description: 'Tunisie Telecom 100GB Data Package - 90 days validity'
+  },
+  {
+    id: 'tt-200gb',
+    name: 'Tunisie Telecom 200GB',
+    price: 100000,
+    category: 'recharge',
+    provider: 'tunisie_telecom',
+    data: '200GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/tt-200gb',
+    description: 'Tunisie Telecom 200GB Data Package - 120 days validity'
+  },
+  {
+    id: 'tt-500gb',
+    name: 'Tunisie Telecom 500GB',
+    price: 250000,
+    category: 'recharge',
+    provider: 'tunisie_telecom',
+    data: '500GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/tt-500gb',
+    description: 'Tunisie Telecom 500GB Data Package - 5 months validity'
+  },
+  {
+    id: 'tt-1000gb',
+    name: 'Tunisie Telecom 1000GB',
+    price: 490000,
+    category: 'recharge',
+    provider: 'tunisie_telecom',
+    data: '1000GB',
+    image: 'https://res.cloudinary.com/looklify/image/upload/v1/estore/tt-1000gb',
+    description: 'Tunisie Telecom 1000GB Data Package - 1 year validity'
   }
 ];
