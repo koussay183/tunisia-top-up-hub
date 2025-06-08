@@ -1,3 +1,4 @@
+
 import { Product } from '../types';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
@@ -32,6 +33,20 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     return `${(price / 1000).toFixed(1)}DT`;
   };
 
+  const getValidityPeriod = (product: Product) => {
+    if (product.category !== 'recharge') return '';
+    
+    // Extract validity from description
+    if (product.description.includes('30 days')) return '30 days';
+    if (product.description.includes('60 days')) return '60 days';
+    if (product.description.includes('90 days')) return '90 days';
+    if (product.description.includes('120 days')) return '120 days';
+    if (product.description.includes('5 months')) return '5 months';
+    if (product.description.includes('1 year')) return '1 year';
+    
+    return '30 days'; // fallback
+  };
+
   const getProviderLogo = (provider?: string) => {
     const logoUrls = {
       'ooredoo': '/lovable-uploads/aec2e4d8-5f2c-496e-99f4-ebea34455e21.png',
@@ -64,7 +79,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] bg-white border-0 shadow-lg rounded-2xl group relative">
+    <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] bg-white border-0 shadow-lg rounded-2xl group relative min-w-[280px] flex-shrink-0">
       <div className="relative">
         <div className={`h-40 md:h-48 bg-gradient-to-br ${getProviderColor(product.provider, product.category)} flex items-center justify-center p-4 md:p-6 relative overflow-hidden`}>
           {/* Background pattern */}
@@ -132,7 +147,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         {product.category === 'recharge' && (
           <div className="flex items-center justify-center">
             <div className="flex items-center text-xs md:text-sm bg-purple-50 text-purple-600 px-2 md:px-3 py-1 rounded-full font-medium">
-              {t('products.validity')}
+              {getValidityPeriod(product)} validity
             </div>
           </div>
         )}

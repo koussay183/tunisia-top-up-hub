@@ -1,6 +1,6 @@
 
 import { useState, useMemo } from 'react';
-import { ProductCard } from './ProductCard';
+import { ProductSection } from './ProductSection';
 import { useProducts } from '../hooks/useProducts';
 import { Button } from '@/components/ui/button';
 import { Grid, Gamepad2, Smartphone, Loader2 } from 'lucide-react';
@@ -36,6 +36,38 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
 
     return filtered;
   }, [products, activeCategory, searchQuery]);
+
+  const groupedProducts = useMemo(() => {
+    const groups = {
+      games: {
+        freefire: filteredProducts.filter(p => p.category === 'freefire'),
+        pubg: filteredProducts.filter(p => p.category === 'pubg'),
+        codm: filteredProducts.filter(p => p.category === 'codm'),
+      },
+      recharge: {
+        ooredoo: filteredProducts.filter(p => p.provider === 'ooredoo'),
+        orange: filteredProducts.filter(p => p.provider === 'orange'),
+        tunisie_telecom: filteredProducts.filter(p => p.provider === 'tunisie_telecom'),
+      }
+    };
+    return groups;
+  }, [filteredProducts]);
+
+  const getProviderLogo = (provider: string) => {
+    const logoUrls = {
+      'ooredoo': '/lovable-uploads/aec2e4d8-5f2c-496e-99f4-ebea34455e21.png',
+      'orange': '/lovable-uploads/f5768551-82db-43a9-8064-505e7e73598a.png',
+      'tunisie_telecom': '/lovable-uploads/06fe559e-ec75-468f-926f-624eb2846bef.png'
+    };
+    return logoUrls[provider as keyof typeof logoUrls];
+  };
+
+  const getGameLogo = (game: string) => {
+    const logoUrls = {
+      'freefire': '/lovable-uploads/ecfd21b9-e010-4202-b8a6-1d431f8202ce.png',
+    };
+    return logoUrls[game as keyof typeof logoUrls];
+  };
 
   const categories = [
     { id: 'all', label: t('categories.all'), icon: Grid },
@@ -89,12 +121,57 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
         })}
       </div>
 
-      {/* Products Grid - Mobile Optimized */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-        {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      {/* Mobile Recharge Sections */}
+      {(activeCategory === 'all' || activeCategory === 'recharge') && (
+        <div className="mb-16">
+          <h1 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+            Mobile Recharge
+          </h1>
+          
+          <ProductSection
+            title="Ooredoo"
+            products={groupedProducts.recharge.ooredoo}
+            logo={getProviderLogo('ooredoo')}
+          />
+          
+          <ProductSection
+            title="Orange"
+            products={groupedProducts.recharge.orange}
+            logo={getProviderLogo('orange')}
+          />
+          
+          <ProductSection
+            title="Tunisie Telecom"
+            products={groupedProducts.recharge.tunisie_telecom}
+            logo={getProviderLogo('tunisie_telecom')}
+          />
+        </div>
+      )}
+
+      {/* Gaming Sections */}
+      {(activeCategory === 'all' || activeCategory === 'games') && (
+        <div className="mb-16">
+          <h1 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">
+            Gaming Cards
+          </h1>
+          
+          <ProductSection
+            title="Free Fire"
+            products={groupedProducts.games.freefire}
+            logo={getGameLogo('freefire')}
+          />
+          
+          <ProductSection
+            title="PUBG Mobile"
+            products={groupedProducts.games.pubg}
+          />
+          
+          <ProductSection
+            title="Call of Duty Mobile"
+            products={groupedProducts.games.codm}
+          />
+        </div>
+      )}
 
       {filteredProducts.length === 0 && (
         <div className="text-center py-16 md:py-20">
