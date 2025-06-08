@@ -4,6 +4,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Gamepad2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface GameIdInputProps {
   gameId: string;
@@ -12,6 +13,8 @@ interface GameIdInputProps {
 }
 
 export const GameIdInput = ({ gameId, setGameId, category }: GameIdInputProps) => {
+  const { t } = useTranslation();
+
   const getGameName = () => {
     switch (category) {
       case 'freefire':
@@ -25,17 +28,16 @@ export const GameIdInput = ({ gameId, setGameId, category }: GameIdInputProps) =
     }
   };
 
-  const getPlaceholder = () => {
-    switch (category) {
-      case 'freefire':
-        return 'Enter your Free Fire Player ID';
-      case 'pubg':
-        return 'Enter your PUBG Mobile Character ID';
-      case 'codm':
-        return 'Enter your Call of Duty Mobile UID';
-      default:
-        return 'Enter your Player ID';
-    }
+  const getTranslatedTitle = () => {
+    return t(`gameId.${category}.title`, getGameName() + ' Player ID');
+  };
+
+  const getTranslatedPlaceholder = () => {
+    return t(`gameId.${category}.placeholder`, `Enter your ${getGameName()} Player ID`);
+  };
+
+  const getTranslatedDescription = () => {
+    return t(`gameId.${category}.description`, 'Enter your in-game Player ID to receive your purchase');
   };
 
   return (
@@ -43,10 +45,10 @@ export const GameIdInput = ({ gameId, setGameId, category }: GameIdInputProps) =
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-lg">
           <Gamepad2 className="w-5 h-5 text-purple-600" />
-          {getGameName()} Player ID
+          {getTranslatedTitle()}
         </CardTitle>
         <CardDescription>
-          Enter your in-game Player ID to receive your purchase
+          {getTranslatedDescription()}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -59,7 +61,7 @@ export const GameIdInput = ({ gameId, setGameId, category }: GameIdInputProps) =
             type="text"
             value={gameId}
             onChange={(e) => setGameId(e.target.value)}
-            placeholder={getPlaceholder()}
+            placeholder={getTranslatedPlaceholder()}
             className="w-full"
             required
           />

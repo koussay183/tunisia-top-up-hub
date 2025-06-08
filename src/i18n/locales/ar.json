@@ -33,12 +33,23 @@
   "products": {
     "popular": "شائع",
     "addToCart": "أضف للسلة",
-    "validity": "صالح لمدة 30 يوم",
+    "validity": "صالح لمدة",
     "diamonds": "ماس",
     "credits": "نقاط",
+    "uc": "UC",
+    "cp": "CP",
+    "package": "باقة",
     "noProducts": "لم يتم العثور على منتجات",
     "noProductsDesc": "جرب تعديل البحث أو معايير التصفية",
-    "loading": "جاري تحميل المنتجات..."
+    "loading": "جاري تحميل المنتجات...",
+    "validityDays": {
+      "30": "30 يوم",
+      "60": "60 يوم", 
+      "90": "90 يوم",
+      "120": "120 يوم",
+      "150": "5 أشهر",
+      "365": "سنة واحدة"
+    }
   },
   "cart": {
     "title": "سلة التسوق",
@@ -64,6 +75,7 @@
     "fullName": "الاسم الكامل",
     "phoneNumber": "رقم الهاتف",
     "email": "البريد الإلكتروني (اختياري)",
+    "gameId": "معرف اللعبة",
     "paymentScreenshot": "لقطة شاشة الدفع",
     "uploadScreenshot": "رفع لقطة الشاشة",
     "uploadDesc": "قم برفع لقطة شاشة لتأكيد دفع D17",
@@ -76,6 +88,7 @@
     "errors": {
       "nameRequired": "يرجى إدخال اسمك",
       "phoneRequired": "يرجى إدخال رقم هاتفك",
+      "gameIdRequired": "يرجى إدخال معرف اللاعب",
       "screenshotRequired": "يرجى رفع لقطة شاشة الدفع",
       "submitError": "فشل في إرسال الطلب. يرجى المحاولة مرة أخرى."
     }
@@ -95,5 +108,22 @@
     "english": "English",
     "arabic": "العربية",
     "french": "Français"
+  },
+  "gameId": {
+    "freefire": {
+      "title": "معرف لاعب Free Fire",
+      "placeholder": "أدخل معرف لاعب Free Fire",
+      "description": "أدخل معرف اللاعب الخاص بك في اللعبة لاستلام مشترياتك"
+    },
+    "pubg": {
+      "title": "معرف شخصية PUBG Mobile",
+      "placeholder": "أدخل معرف شخصية PUBG Mobile",
+      "description": "أدخل معرف الشخصية الخاص بك في اللعبة لاستلام مشترياتك"
+    },
+    "codm": {
+      "title": "معرف Call of Duty Mobile",
+      "placeholder": "أدخل معرف Call of Duty Mobile UID",
+      "description": "أدخل معرف اللاعب الخاص بك في اللعبة لاستلام مشترياتك"
+    }
   }
 }

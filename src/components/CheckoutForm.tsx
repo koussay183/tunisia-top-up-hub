@@ -10,8 +10,9 @@ import { toast } from '@/hooks/use-toast';
 import { uploadToCloudinary } from '../config/cloudinary';
 import { db } from '../config/firebase';
 import { collection, addDoc } from 'firebase/firestore';
-import { X, Upload, CreditCard, User, Phone, Mail, Camera, Loader2 } from 'lucide-react';
+import { X, Upload, CreditCard, User, Phone, Mail, Camera, Loader2, Gamepad2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { GameIdInput } from './GameIdInput';
 
 interface CheckoutFormProps {
   isOpen: boolean;
@@ -28,9 +29,15 @@ export const CheckoutForm = ({ isOpen, onClose, onOrderComplete }: CheckoutFormP
     phone: '',
     email: ''
   });
+  const [gameId, setGameId] = useState('');
   const [paymentScreenshot, setPaymentScreenshot] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>('');
   const { t } = useTranslation();
+
+  // Check if there are gaming products in the cart
+  const hasGamingProducts = cartItems.some(item => 
+    ['freefire', 'pubg', 'codm'].includes(item.category)
+  );
 
   const formatPrice = (price: number) => {
     return `${(price / 1000).toFixed(1)}DT`;
@@ -69,6 +76,14 @@ export const CheckoutForm = ({ isOpen, onClose, onOrderComplete }: CheckoutFormP
       });
       return false;
     }
+    if (hasGamingProducts && !gameId.trim()) {
+      toast({
+        title: "Error",
+        description: "Please enter your Game Player ID",
+        variant: "destructive"
+      });
+      return false;
+    }
     if (!paymentScreenshot) {
       toast({
         title: "Error",
@@ -97,6 +112,7 @@ export const CheckoutForm = ({ isOpen, onClose, onOrderComplete }: CheckoutFormP
         customerName: formData.customerName,
         phone: formData.phone,
         email: formData.email || '',
+        gameId: hasGamingProducts ? gameId : '',
         items: cartItems,
         total: getTotalPrice(),
         paymentScreenshot: screenshotUrl,
@@ -114,6 +130,7 @@ export const CheckoutForm = ({ isOpen, onClose, onOrderComplete }: CheckoutFormP
       // Clear cart and reset form
       clearCart();
       setFormData({ customerName: '', phone: '', email: '' });
+      setGameId('');
       setPaymentScreenshot(null);
       setPreviewUrl('');
       
@@ -133,6 +150,11 @@ export const CheckoutForm = ({ isOpen, onClose, onOrderComplete }: CheckoutFormP
   };
 
   if (!isOpen) return null;
+
+  // Get the first gaming product's category for the GameIdInput
+  const firstGamingProduct = cartItems.find(item => 
+    ['freefire', 'pubg', 'codm'].includes(item.category)
+  );
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
@@ -245,6 +267,15 @@ export const CheckoutForm = ({ isOpen, onClose, onOrderComplete }: CheckoutFormP
                 className="h-12 text-base border-2 border-gray-200 focus:border-indigo-500 rounded-xl"
               />
             </div>
+
+            {/* Game ID Input - only show if there are gaming products */}
+            {hasGamingProducts && firstGamingProduct && (
+              <GameIdInput 
+                gameId={gameId}
+                setGameId={setGameId}
+                category={firstGamingProduct.category}
+              />
+            )}
 
             {/* Payment Screenshot Upload */}
             <div className="space-y-3">
