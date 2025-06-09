@@ -5,9 +5,14 @@
     "cart": "Cart",
     "searchPlaceholder": "Search products..."
   },
+  "language": {
+    "english": "English",
+    "arabic": "Arabic", 
+    "french": "French"
+  },
   "categories": {
     "allProducts": "All Products",
-    "rechargeGames": "Recharge Jeux",
+    "rechargeGames": "Recharge Games",
     "rechargeInternet": "Recharge Internet"
   },
   "products": {

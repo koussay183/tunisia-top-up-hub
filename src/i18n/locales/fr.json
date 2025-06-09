@@ -5,6 +5,11 @@
     "cart": "Panier",
     "searchPlaceholder": "Rechercher des produits..."
   },
+  "language": {
+    "english": "Anglais",
+    "arabic": "Arabe", 
+    "french": "Français"
+  },
   "categories": {
     "allProducts": "Tous les Produits",
     "rechargeGames": "Recharge Jeux",

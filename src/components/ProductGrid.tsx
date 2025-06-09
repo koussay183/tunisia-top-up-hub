@@ -98,32 +98,34 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
     <section className="py-16 bg-gradient-to-br from-slate-50 to-purple-50">
       <div className="container mx-auto px-4">
         <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="mb-8">
-          <TabsList className="grid w-full grid-cols-3 max-w-2xl mx-auto bg-white/80 backdrop-blur-sm border border-purple-200 shadow-lg rounded-2xl p-2">
+          <TabsList className="grid w-full grid-cols-3 max-w-2xl mx-auto bg-white/90 backdrop-blur-sm border border-purple-200 shadow-xl rounded-2xl p-1 h-16">
             <TabsTrigger 
               value="all" 
-              className="flex items-center gap-2 rounded-xl font-semibold data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-600 data-[state=active]:text-white transition-all duration-300"
+              className="flex items-center gap-2 rounded-xl font-semibold text-sm px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300 hover:bg-gray-100"
             >
               <Grid3X3 className="w-4 h-4" />
-              {t('categories.allProducts')}
+              <span className="hidden sm:inline">{t('categories.allProducts')}</span>
+              <span className="sm:hidden">All</span>
             </TabsTrigger>
             <TabsTrigger 
               value="games"
-              className="flex items-center gap-2 rounded-xl font-semibold data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-500 data-[state=active]:to-red-600 data-[state=active]:text-white transition-all duration-300"
+              className="flex items-center gap-2 rounded-xl font-semibold text-sm px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-500 data-[state=active]:to-red-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300 hover:bg-gray-100"
             >
               <Gamepad2 className="w-4 h-4" />
-              {t('categories.rechargeGames')}
+              <span className="hidden sm:inline">{t('categories.rechargeGames')}</span>
+              <span className="sm:hidden">Games</span>
             </TabsTrigger>
             <TabsTrigger 
               value="recharge"
-              className="flex items-center gap-2 rounded-xl font-semibold data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white transition-all duration-300"
+              className="flex items-center gap-2 rounded-xl font-semibold text-sm px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300 hover:bg-gray-100"
             >
               <Smartphone className="w-4 h-4" />
-              {t('categories.rechargeInternet')}
+              <span className="hidden sm:inline">{t('categories.rechargeInternet')}</span>
+              <span className="sm:hidden">Mobile</span>
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="all" className="space-y-12">
-            {/* Gaming sections */}
+          <TabsContent value="all" className="space-y-12 mt-8">
             {Object.entries(gameProducts).map(([gameId, gameProductList]) => {
               const gameInfo = getGameInfo(gameId);
               return (
@@ -136,7 +138,6 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
               );
             })}
             
-            {/* Recharge sections */}
             {Object.entries(rechargeProducts).map(([providerId, providerProducts]) => {
               const providerInfo = getProviderInfo(providerId);
               return (
@@ -150,7 +151,7 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
             })}
           </TabsContent>
 
-          <TabsContent value="games" className="space-y-12">
+          <TabsContent value="games" className="space-y-12 mt-8">
             {Object.entries(gameProducts).map(([gameId, gameProductList]) => {
               const gameInfo = getGameInfo(gameId);
               return (
@@ -164,7 +165,7 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
             })}
           </TabsContent>
 
-          <TabsContent value="recharge" className="space-y-12">
+          <TabsContent value="recharge" className="space-y-12 mt-8">
             {Object.entries(rechargeProducts).map(([providerId, providerProducts]) => {
               const providerInfo = getProviderInfo(providerId);
               return (
@@ -179,7 +180,7 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
           </TabsContent>
         </Tabs>
 
-        {filteredProducts.length === 0 && (
+        {filteredProducts.length === 0 && !loading && (
           <div className="text-center py-12">
             <div className="text-gray-400 text-6xl mb-4">🎮</div>
             <h3 className="text-xl font-semibold text-gray-600 mb-2">{t('products.noProducts')}</h3>

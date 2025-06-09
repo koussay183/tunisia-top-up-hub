@@ -15,9 +15,6 @@ export const useProducts = () => {
       try {
         console.log('Fetching products from Firebase...');
         
-        // Initialize default data if needed
-        await initializeDefaultData(db);
-        
         const querySnapshot = await getDocs(collection(db, 'products'));
         const fetchedProducts: Product[] = [];
         
@@ -30,7 +27,29 @@ export const useProducts = () => {
         });
 
         console.log('Fetched products from Firebase:', fetchedProducts);
-        setProducts(fetchedProducts);
+        
+        // If no products exist, initialize default data
+        if (fetchedProducts.length === 0) {
+          console.log('No products found, initializing default data...');
+          await initializeDefaultData(db);
+          
+          // Fetch again after initialization
+          const newQuerySnapshot = await getDocs(collection(db, 'products'));
+          const newProducts: Product[] = [];
+          
+          newQuerySnapshot.forEach((doc) => {
+            const data = doc.data();
+            newProducts.push({
+              id: doc.id,
+              ...data
+            } as Product);
+          });
+          
+          setProducts(newProducts);
+        } else {
+          setProducts(fetchedProducts);
+        }
+        
         setError(null);
       } catch (err) {
         console.error('Error fetching products:', err);

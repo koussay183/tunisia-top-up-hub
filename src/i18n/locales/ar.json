@@ -5,6 +5,11 @@
     "cart": "السلة",
     "searchPlaceholder": "البحث عن المنتجات..."
   },
+  "language": {
+    "english": "الإنجليزية",
+    "arabic": "العربية", 
+    "french": "الفرنسية"
+  },
   "categories": {
     "allProducts": "جميع المنتجات",
     "rechargeGames": "شحن الألعاب",
