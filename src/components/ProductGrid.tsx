@@ -43,7 +43,7 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
 
   // Group products by category for better display
   const gameProducts = useMemo(() => {
-    const games = {};
+    const games: { [key: string]: any[] } = {};
     filteredProducts
       .filter(product => ['freefire', 'pubg', 'codm', 'mobilelegends', 'efootball'].includes(product.category))
       .forEach(product => {
@@ -56,7 +56,7 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
   }, [filteredProducts]);
 
   const rechargeProducts = useMemo(() => {
-    const providers = {};
+    const providers: { [key: string]: any[] } = {};
     filteredProducts
       .filter(product => product.category === 'recharge')
       .forEach(product => {

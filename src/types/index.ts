@@ -3,7 +3,7 @@ export interface Product {
   id: string;
   name: string;
   price: number;
-  category: 'freefire' | 'pubg' | 'codm' | 'recharge';
+  category: 'freefire' | 'pubg' | 'codm' | 'mobilelegends' | 'efootball' | 'recharge';
   provider?: 'ooredoo' | 'orange' | 'tunisie_telecom';
   data?: string;
   image: string;
@@ -37,6 +37,8 @@ export interface Order {
   phone: string;
   email?: string;
   gameId?: string; // For game purchases
+  gameEmail?: string; // For eFootball
+  gamePassword?: string; // For eFootball
   items: CartItem[];
   total: number;
   paymentScreenshot?: string;
