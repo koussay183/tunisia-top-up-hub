@@ -6,6 +6,7 @@ import { useCart } from '../contexts/CartContext';
 import { toast } from '@/hooks/use-toast';
 import { Plus, Star } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { defaultGames } from '../data/defaultData';
 
 interface ProductCardProps {
   product: Product;
@@ -60,6 +61,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     if (category === 'freefire') return 'from-orange-500 to-red-600';
     if (category === 'pubg') return 'from-blue-600 to-purple-600';
     if (category === 'codm') return 'from-green-600 to-blue-600';
+    if (category === 'mobilelegends') return 'from-purple-500 to-pink-600';
+    if (category === 'efootball') return 'from-green-500 to-blue-500';
     
     switch (provider) {
       case 'ooredoo': return 'from-red-500 to-red-600';
@@ -70,12 +73,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   const getGameLogo = (category: string) => {
-    switch (category) {
-      case 'freefire':
-        return '/lovable-uploads/ecfd21b9-e010-4202-b8a6-1d431f8202ce.png';
-      default:
-        return null;
-    }
+    const game = defaultGames.find(g => g.id === category);
+    return game?.logo || product.image;
   };
 
   return (
@@ -89,24 +88,27 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             <div className="absolute top-1/2 left-1/2 w-16 md:w-24 h-16 md:h-24 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
           </div>
           
-          {product.category === 'freefire' || product.category === 'pubg' || product.category === 'codm' ? (
+          {product.category === 'freefire' || product.category === 'pubg' || product.category === 'codm' || product.category === 'mobilelegends' || product.category === 'efootball' ? (
             <div className="text-center text-white relative z-10">
               <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-3 bg-white rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                {getGameLogo(product.category) ? (
-                  <img 
-                    src={getGameLogo(product.category)} 
-                    alt={product.category} 
-                    className="w-10 h-10 md:w-12 md:h-12 object-contain"
-                  />
-                ) : (
-                  <div className="text-sm md:text-lg font-bold text-gray-800">
-                    {product.category.toUpperCase()}
-                  </div>
-                )}
+                <img 
+                  src={getGameLogo(product.category)} 
+                  alt={product.category} 
+                  className="w-10 h-10 md:w-12 md:h-12 object-contain rounded-lg"
+                  onError={(e) => {
+                    // Fallback to category name if image fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent) {
+                      parent.innerHTML = `<div class="text-sm md:text-lg font-bold text-gray-800">${product.category.toUpperCase()}</div>`;
+                    }
+                  }}
+                />
               </div>
               <div className="text-lg md:text-xl font-bold mb-1 md:mb-2">{product.name}</div>
               <div className="text-xs md:text-sm opacity-90 bg-white/20 px-2 md:px-3 py-1 rounded-full">
-                {product.category === 'freefire' ? t('products.diamonds') : t('products.credits')}
+                {product.category === 'freefire' || product.category === 'mobilelegends' ? t('products.diamonds') : t('products.credits')}
               </div>
             </div>
           ) : (

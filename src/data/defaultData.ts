@@ -11,28 +11,28 @@ export const defaultGames = [
   {
     id: 'pubg',
     name: 'PUBG Mobile',
-    logo: '',
+    logo: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=200&h=200&fit=crop&crop=center',
     description: 'PlayerUnknown\'s Battlegrounds Mobile',
     category: 'battle-royale'
   },
   {
     id: 'codm',
     name: 'Call of Duty Mobile',
-    logo: '',
+    logo: 'https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=200&h=200&fit=crop&crop=center',
     description: 'Call of Duty Mobile',
     category: 'fps'
   },
   {
     id: 'mobilelegends',
     name: 'Mobile Legends',
-    logo: '/lovable-uploads/17accab7-7b82-456f-92e9-9a149823464b.png',
+    logo: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=200&h=200&fit=crop&crop=center',
     description: 'Mobile Legends Bang Bang',
     category: 'moba'
   },
   {
     id: 'efootball',
     name: 'eFootball',
-    logo: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    logo: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center',
     description: 'eFootball Mobile',
     category: 'sports'
   }
@@ -94,7 +94,7 @@ export const defaultProducts: Product[] = [
     name: '60 UC',
     price: 4000,
     category: 'pubg',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=200&h=200&fit=crop&crop=center',
     description: 'PUBG Mobile 60 UC - Instant delivery',
     gameId: 'pubg'
   },
@@ -103,7 +103,7 @@ export const defaultProducts: Product[] = [
     name: '325 UC',
     price: 20000,
     category: 'pubg',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=200&h=200&fit=crop&crop=center',
     description: 'PUBG Mobile 325 UC - Instant delivery',
     gameId: 'pubg'
   },
@@ -113,7 +113,7 @@ export const defaultProducts: Product[] = [
     name: '80 CP',
     price: 4500,
     category: 'codm',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=200&h=200&fit=crop&crop=center',
     description: 'Call of Duty Mobile 80 CP - Instant delivery',
     gameId: 'codm'
   },
@@ -122,7 +122,7 @@ export const defaultProducts: Product[] = [
     name: '400 CP',
     price: 21000,
     category: 'codm',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=200&h=200&fit=crop&crop=center',
     description: 'Call of Duty Mobile 400 CP - Instant delivery',
     gameId: 'codm'
   },
@@ -132,7 +132,7 @@ export const defaultProducts: Product[] = [
     name: '278 Diamonds',
     price: 20000,
     category: 'mobilelegends',
-    image: '/lovable-uploads/17accab7-7b82-456f-92e9-9a149823464b.png',
+    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=200&h=200&fit=crop&crop=center',
     description: 'Mobile Legends 278 Diamonds - Instant delivery',
     gameId: 'mobilelegends'
   },
@@ -141,7 +141,7 @@ export const defaultProducts: Product[] = [
     name: '571 Diamonds',
     price: 39000,
     category: 'mobilelegends',
-    image: '/lovable-uploads/17accab7-7b82-456f-92e9-9a149823464b.png',
+    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=200&h=200&fit=crop&crop=center',
     description: 'Mobile Legends 571 Diamonds - Instant delivery',
     gameId: 'mobilelegends'
   },
@@ -150,7 +150,7 @@ export const defaultProducts: Product[] = [
     name: '1192 Diamonds',
     price: 80000,
     category: 'mobilelegends',
-    image: '/lovable-uploads/17accab7-7b82-456f-92e9-9a149823464b.png',
+    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=200&h=200&fit=crop&crop=center',
     description: 'Mobile Legends 1192 Diamonds - Instant delivery',
     gameId: 'mobilelegends'
   },
@@ -159,7 +159,7 @@ export const defaultProducts: Product[] = [
     name: '1788 Diamonds',
     price: 115000,
     category: 'mobilelegends',
-    image: '/lovable-uploads/17accab7-7b82-456f-92e9-9a149823464b.png',
+    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=200&h=200&fit=crop&crop=center',
     description: 'Mobile Legends 1788 Diamonds - Instant delivery',
     gameId: 'mobilelegends'
   },
@@ -168,7 +168,7 @@ export const defaultProducts: Product[] = [
     name: '3007 Diamonds',
     price: 185000,
     category: 'mobilelegends',
-    image: '/lovable-uploads/17accab7-7b82-456f-92e9-9a149823464b.png',
+    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=200&h=200&fit=crop&crop=center',
     description: 'Mobile Legends 3007 Diamonds - Instant delivery',
     gameId: 'mobilelegends'
   },
@@ -177,7 +177,7 @@ export const defaultProducts: Product[] = [
     name: '3576 Diamonds',
     price: 220000,
     category: 'mobilelegends',
-    image: '/lovable-uploads/17accab7-7b82-456f-92e9-9a149823464b.png',
+    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=200&h=200&fit=crop&crop=center',
     description: 'Mobile Legends 3576 Diamonds - Instant delivery',
     gameId: 'mobilelegends'
   },
@@ -187,7 +187,7 @@ export const defaultProducts: Product[] = [
     name: '130 Coins',
     price: 5000,
     category: 'efootball',
-    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center',
     description: 'eFootball 130 Coins - Instant delivery',
     gameId: 'efootball'
   },
@@ -196,7 +196,7 @@ export const defaultProducts: Product[] = [
     name: '300 Coins',
     price: 10000,
     category: 'efootball',
-    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center',
     description: 'eFootball 300 Coins - Instant delivery',
     gameId: 'efootball'
   },
@@ -205,7 +205,7 @@ export const defaultProducts: Product[] = [
     name: '550 Coins',
     price: 20000,
     category: 'efootball',
-    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center',
     description: 'eFootball 550 Coins - Instant delivery',
     gameId: 'efootball'
   },
@@ -214,7 +214,7 @@ export const defaultProducts: Product[] = [
     name: '750 Coins',
     price: 25000,
     category: 'efootball',
-    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center',
     description: 'eFootball 750 Coins - Instant delivery',
     gameId: 'efootball'
   },
@@ -223,7 +223,7 @@ export const defaultProducts: Product[] = [
     name: '1040 Coins',
     price: 35000,
     category: 'efootball',
-    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center',
     description: 'eFootball 1040 Coins - Instant delivery',
     gameId: 'efootball'
   },
@@ -232,7 +232,7 @@ export const defaultProducts: Product[] = [
     name: '2130 Coins',
     price: 65000,
     category: 'efootball',
-    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center',
     description: 'eFootball 2130 Coins - Instant delivery',
     gameId: 'efootball'
   },
@@ -241,7 +241,7 @@ export const defaultProducts: Product[] = [
     name: '3250 Coins',
     price: 100000,
     category: 'efootball',
-    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center',
     description: 'eFootball 3250 Coins - Instant delivery',
     gameId: 'efootball'
   },
@@ -250,7 +250,7 @@ export const defaultProducts: Product[] = [
     name: '5700 Coins',
     price: 155000,
     category: 'efootball',
-    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center',
     description: 'eFootball 5700 Coins - Instant delivery',
     gameId: 'efootball'
   },
@@ -259,11 +259,10 @@ export const defaultProducts: Product[] = [
     name: '12800 Coins',
     price: 345000,
     category: 'efootball',
-    image: '/lovable-uploads/608bca17-0eca-4d48-b45e-59ffd2b3090f.png',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center',
     description: 'eFootball 12800 Coins - Instant delivery',
     gameId: 'efootball'
   },
-  // ... keep existing code (Ooredoo, Orange, Tunisie Telecom recharge packages)
   {
     id: 'ooredoo-25gb',
     name: '25GB Package',
