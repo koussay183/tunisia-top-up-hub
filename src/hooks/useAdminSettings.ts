@@ -24,6 +24,7 @@ export const useAdminSettings = () => {
         const defaultSettings: AdminSettings = {
           id: 'main',
           d17Numbers: ['12345678', '87654321', '11223344'],
+          whatsappNumber: '+216123456789',
           updatedAt: new Date()
         };
         await setDoc(docRef, defaultSettings);
@@ -39,7 +40,7 @@ export const useAdminSettings = () => {
   const updateD17Numbers = async (numbers: string[]) => {
     try {
       const updatedSettings: AdminSettings = {
-        id: 'main',
+        ...settings!,
         d17Numbers: numbers,
         updatedAt: new Date()
       };
@@ -53,10 +54,28 @@ export const useAdminSettings = () => {
     }
   };
 
+  const updateWhatsAppNumber = async (number: string) => {
+    try {
+      const updatedSettings: AdminSettings = {
+        ...settings!,
+        whatsappNumber: number,
+        updatedAt: new Date()
+      };
+      
+      await setDoc(doc(db, 'admin_settings', 'main'), updatedSettings);
+      setSettings(updatedSettings);
+      return true;
+    } catch (error) {
+      console.error('Error updating WhatsApp number:', error);
+      return false;
+    }
+  };
+
   return {
     settings,
     loading,
     updateD17Numbers,
+    updateWhatsAppNumber,
     refetch: fetchSettings
   };
 };

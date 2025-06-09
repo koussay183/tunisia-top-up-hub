@@ -4,6 +4,7 @@ import { Header } from '../components/Header';
 import { ProductGrid } from '../components/ProductGrid';
 import { Cart } from '../components/Cart';
 import { CheckoutForm } from '../components/CheckoutForm';
+import { WhatsAppButton } from '../components/WhatsAppButton';
 import { useCart } from '../contexts/CartContext';
 import { Zap, Shield, DollarSign, Gamepad2, Smartphone, Star, CheckCircle, Clock, Award } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -155,6 +156,9 @@ const Index = () => {
         onClose={() => setIsCheckoutOpen(false)}
         onOrderComplete={handleOrderComplete}
       />
+
+      {/* WhatsApp Support Button */}
+      <WhatsAppButton />
 
       {/* Footer - Simplified */}
       <footer className="bg-gray-900 text-white py-12 md:py-16">

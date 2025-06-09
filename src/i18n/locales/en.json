@@ -2,98 +2,106 @@
 {
   "header": {
     "title": "Chargili",
-    "subtitle": "Gaming Cards & Mobile Recharge",
-    "searchPlaceholder": "Search for games or mobile recharge..."
+    "cart": "Cart",
+    "searchPlaceholder": "Search products..."
+  },
+  "categories": {
+    "allProducts": "All Products",
+    "rechargeGames": "Recharge Jeux",
+    "rechargeInternet": "Recharge Internet"
+  },
+  "products": {
+    "loading": "Loading products...",
+    "noProducts": "No products found",
+    "noProductsDesc": "Try adjusting your search or browse different categories",
+    "addToCart": "Add to Cart",
+    "popular": "Popular",
+    "diamonds": "Diamonds",
+    "credits": "Credits"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "emptyDesc": "Add some products to get started",
+    "total": "Total",
+    "checkout": "Proceed to Checkout",
+    "addedToCart": "Added to cart!",
+    "addedDesc": "{{productName}} (Quantity: {{quantity}})"
+  },
+  "checkout": {
+    "title": "Complete Your Order",
+    "customerInfo": "Customer Information",
+    "name": "Full Name",
+    "phone": "Phone Number",
+    "email": "Email (Optional)",
+    "orderSummary": "Order Summary",
+    "paymentInfo": "Payment Information",
+    "paymentDesc": "Please transfer the total amount to one of the D17 numbers below:",
+    "uploadScreenshot": "Upload Payment Screenshot",
+    "uploadDesc": "Upload a screenshot of your payment confirmation",
+    "placeOrder": "Place Order",
+    "orderSuccess": "Order Placed Successfully!",
+    "orderSuccessDesc": "Your order has been received and will be processed shortly."
+  },
+  "gameId": {
+    "freefire": {
+      "title": "Free Fire Player ID",
+      "placeholder": "Enter your Free Fire Player ID",
+      "description": "Enter your in-game Player ID to receive your diamonds"
+    },
+    "pubg": {
+      "title": "PUBG Mobile Player ID",
+      "placeholder": "Enter your PUBG Mobile Player ID",
+      "description": "Enter your in-game Player ID to receive your UC"
+    },
+    "codm": {
+      "title": "Call of Duty Mobile Player ID",
+      "placeholder": "Enter your Call of Duty Mobile Player ID",
+      "description": "Enter your in-game Player ID to receive your CP"
+    },
+    "mobilelegends": {
+      "title": "Mobile Legends Player ID",
+      "placeholder": "Enter your Mobile Legends Player ID",
+      "description": "Enter your in-game Player ID to receive your diamonds"
+    },
+    "efootball": {
+      "title": "eFootball Account Info",
+      "placeholder": "Enter your eFootball details",
+      "description": "Enter your Konami account credentials to receive your coins"
+    }
   },
   "hero": {
-    "title": "Gaming Cards &",
-    "titleHighlight": "Mobile Recharge",
-    "subtitle": "Instant delivery • Secure payment • Best prices in Tunisia",
+    "title": "Welcome to",
+    "titleHighlight": "Chargili",
+    "subtitle": "Your trusted platform for gaming cards and mobile recharge",
     "instantDelivery": "Instant Delivery",
     "securePayment": "Secure Payment",
     "bestPrices": "Best Prices"
   },
   "features": {
-    "title": "What We Offer",
-    "subtitle": "Choose from our wide selection of gaming cards and mobile recharge packages",
+    "title": "Why Choose Chargili?",
+    "subtitle": "We provide the best gaming and mobile recharge experience in Tunisia",
     "gamingCards": {
       "title": "Gaming Cards",
-      "description": "Free Fire, PUBG Mobile, Call of Duty Mobile and more. Get your diamonds and credits instantly."
+      "description": "Get instant delivery of gaming cards for Free Fire, PUBG, Call of Duty Mobile, Mobile Legends, and eFootball"
     },
     "mobileRecharge": {
       "title": "Mobile Recharge",
-      "description": "Ooredoo, Orange, Tunisie Telecom data packages. Stay connected with the best rates."
-    }
-  },
-  "categories": {
-    "all": "All Products",
-    "games": "Game Cards",
-    "recharge": "Mobile Recharge"
-  },
-  "products": {
-    "popular": "Popular",
-    "addToCart": "Add to Cart",
-    "validity": "30 days validity",
-    "diamonds": "Diamonds",
-    "credits": "Credits",
-    "noProducts": "No products found",
-    "noProductsDesc": "Try adjusting your search or filter criteria",
-    "loading": "Loading products..."
-  },
-  "cart": {
-    "title": "Shopping Cart",
-    "empty": "Your cart is empty",
-    "emptyDesc": "Add some products to get started!",
-    "item": "item",
-    "items": "items",
-    "each": "each",
-    "total": "Total",
-    "checkout": "Proceed to Checkout",
-    "loading": "Loading cart...",
-    "addedToCart": "Added to cart!",
-    "addedDesc": "{{productName}} ({{quantity}}) has been added to your cart."
-  },
-  "checkout": {
-    "title": "Checkout",
-    "orderSummary": "Order Summary",
-    "total": "Total",
-    "paymentInstructions": "Payment Instructions",
-    "paymentDesc": "Send {{amount}} to one of these D17 numbers:",
-    "paymentTip": "💡 After payment, upload a screenshot and fill out your details below.",
-    "customerInfo": "Customer Information",
-    "fullName": "Full Name",
-    "phoneNumber": "Phone Number",
-    "email": "Email (Optional)",
-    "paymentScreenshot": "Payment Screenshot",
-    "uploadScreenshot": "Upload Screenshot",
-    "uploadDesc": "Upload a screenshot of your D17 payment confirmation",
-    "removeImage": "Remove Image",
-    "submitOrder": "Submit Order",
-    "submittingOrder": "Submitting Order...",
-    "orderSubmitted": "Order submitted!",
-    "orderSubmittedDesc": "Your order has been submitted successfully. We'll process it shortly.",
-    "loadingPaymentNumbers": "Loading payment numbers...",
-    "errors": {
-      "nameRequired": "Please enter your name",
-      "phoneRequired": "Please enter your phone number",
-      "screenshotRequired": "Please upload payment screenshot",
-      "submitError": "Failed to submit order. Please try again."
+      "description": "Recharge your mobile phone with Ooredoo, Orange, and Tunisie Telecom packages"
     }
   },
   "footer": {
-    "description": "Your trusted partner for gaming cards and mobile recharge in Tunisia",
+    "description": "Your trusted platform for gaming cards and mobile recharge in Tunisia",
     "quickLinks": "Quick Links",
     "gamingCards": "Gaming Cards",
     "mobileRecharge": "Mobile Recharge",
-    "support": "Support",
-    "contact": "Contact",
-    "contactInfo": "Contact Info",
+    "support": "24/7 Support",
+    "contact": "Contact Us",
+    "contactInfo": "Contact Information",
     "support24": "24/7 Support",
     "copyright": "© 2024 Chargili. All rights reserved."
   },
-  "language": {
-    "english": "English",
-    "arabic": "العربية",
-    "french": "Français"
+  "whatsapp": {
+    "defaultMessage": "Hello! I need help with my order."
   }
 }

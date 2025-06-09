@@ -49,5 +49,6 @@ export interface Order {
 export interface AdminSettings {
   id: string;
   d17Numbers: string[];
+  whatsappNumber: string;
   updatedAt: Date;
 }

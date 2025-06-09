@@ -465,3 +465,29 @@ export const defaultProducts: Product[] = [
     providerId: 'tunisie_telecom'
   }
 ];
+
+// Function to initialize default data in Firebase
+export const initializeDefaultData = async (db: any) => {
+  try {
+    const { collection, getDocs, addDoc } = await import('firebase/firestore');
+    
+    // Check if products already exist
+    const productsSnapshot = await getDocs(collection(db, 'products'));
+    
+    if (productsSnapshot.empty) {
+      console.log('Initializing default products in Firebase...');
+      
+      // Add all default products to Firebase
+      for (const product of defaultProducts) {
+        await addDoc(collection(db, 'products'), {
+          ...product,
+          id: undefined // Let Firebase generate the ID
+        });
+      }
+      
+      console.log('Default products initialized successfully');
+    }
+  } catch (error) {
+    console.error('Error initializing default data:', error);
+  }
+};

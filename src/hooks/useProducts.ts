@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../config/firebase';
 import { Product } from '../types';
-import { defaultProducts } from '../data/defaultData';
+import { initializeDefaultData } from '../data/defaultData';
 
 export const useProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -14,6 +14,10 @@ export const useProducts = () => {
     const fetchProducts = async () => {
       try {
         console.log('Fetching products from Firebase...');
+        
+        // Initialize default data if needed
+        await initializeDefaultData(db);
+        
         const querySnapshot = await getDocs(collection(db, 'products'));
         const fetchedProducts: Product[] = [];
         
@@ -26,19 +30,12 @@ export const useProducts = () => {
         });
 
         console.log('Fetched products from Firebase:', fetchedProducts);
-        
-        // Combine default products with fetched products
-        // If there are no products in Firebase, use default products
-        const allProducts = fetchedProducts.length > 0 ? fetchedProducts : defaultProducts;
-        
-        console.log('All products (default + Firebase):', allProducts);
-        setProducts(allProducts);
+        setProducts(fetchedProducts);
         setError(null);
       } catch (err) {
         console.error('Error fetching products:', err);
-        // Fallback to default products if Firebase fails
-        setProducts(defaultProducts);
-        setError('Failed to fetch products from database, using default products');
+        setProducts([]);
+        setError('Failed to fetch products from database');
       } finally {
         setLoading(false);
       }

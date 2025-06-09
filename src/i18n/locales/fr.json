@@ -2,98 +2,106 @@
 {
   "header": {
     "title": "Chargili",
-    "subtitle": "Cartes de Jeu et Recharge Mobile",
-    "searchPlaceholder": "Rechercher des jeux ou une recharge mobile..."
+    "cart": "Panier",
+    "searchPlaceholder": "Rechercher des produits..."
+  },
+  "categories": {
+    "allProducts": "Tous les Produits",
+    "rechargeGames": "Recharge Jeux",
+    "rechargeInternet": "Recharge Internet"
+  },
+  "products": {
+    "loading": "Chargement des produits...",
+    "noProducts": "Aucun produit trouvé",
+    "noProductsDesc": "Essayez d'ajuster votre recherche ou parcourez différentes catégories",
+    "addToCart": "Ajouter au Panier",
+    "popular": "Populaire",
+    "diamonds": "Diamants",
+    "credits": "Crédits"
+  },
+  "cart": {
+    "title": "Panier d'Achat",
+    "empty": "Votre panier est vide",
+    "emptyDesc": "Ajoutez des produits pour commencer",
+    "total": "Total",
+    "checkout": "Passer à la Commande",
+    "addedToCart": "Ajouté au panier!",
+    "addedDesc": "{{productName}} (Quantité: {{quantity}})"
+  },
+  "checkout": {
+    "title": "Finaliser Votre Commande",
+    "customerInfo": "Informations Client",
+    "name": "Nom Complet",
+    "phone": "Numéro de Téléphone",
+    "email": "Email (Optionnel)",
+    "orderSummary": "Résumé de la Commande",
+    "paymentInfo": "Informations de Paiement",
+    "paymentDesc": "Veuillez transférer le montant total à l'un des numéros D17 ci-dessous:",
+    "uploadScreenshot": "Télécharger Capture d'Écran",
+    "uploadDesc": "Téléchargez une capture d'écran de votre confirmation de paiement",
+    "placeOrder": "Passer la Commande",
+    "orderSuccess": "Commande Passée avec Succès!",
+    "orderSuccessDesc": "Votre commande a été reçue et sera traitée sous peu."
+  },
+  "gameId": {
+    "freefire": {
+      "title": "ID Joueur Free Fire",
+      "placeholder": "Entrez votre ID Joueur Free Fire",
+      "description": "Entrez votre ID de joueur pour recevoir vos diamants"
+    },
+    "pubg": {
+      "title": "ID Joueur PUBG Mobile",
+      "placeholder": "Entrez votre ID Joueur PUBG Mobile",
+      "description": "Entrez votre ID de joueur pour recevoir vos UC"
+    },
+    "codm": {
+      "title": "ID Joueur Call of Duty Mobile",
+      "placeholder": "Entrez votre ID Joueur Call of Duty Mobile",
+      "description": "Entrez votre ID de joueur pour recevoir vos CP"
+    },
+    "mobilelegends": {
+      "title": "ID Joueur Mobile Legends",
+      "placeholder": "Entrez votre ID Joueur Mobile Legends",
+      "description": "Entrez votre ID de joueur pour recevoir vos diamants"
+    },
+    "efootball": {
+      "title": "Infos Compte eFootball",
+      "placeholder": "Entrez vos détails eFootball",
+      "description": "Entrez vos identifiants Konami pour recevoir vos pièces"
+    }
   },
   "hero": {
-    "title": "Cartes de Jeu &",
-    "titleHighlight": "Recharge Mobile",
-    "subtitle": "Livraison instantanée • Paiement sécurisé • Meilleurs prix en Tunisie",
+    "title": "Bienvenue chez",
+    "titleHighlight": "Chargili",
+    "subtitle": "Votre plateforme de confiance pour les cartes de jeu et la recharge mobile",
     "instantDelivery": "Livraison Instantanée",
     "securePayment": "Paiement Sécurisé",
     "bestPrices": "Meilleurs Prix"
   },
   "features": {
-    "title": "Ce Que Nous Offrons",
-    "subtitle": "Choisissez parmi notre large sélection de cartes de jeu et forfaits de recharge mobile",
+    "title": "Pourquoi Choisir Chargili?",
+    "subtitle": "Nous offrons la meilleure expérience de jeu et de recharge mobile en Tunisie",
     "gamingCards": {
       "title": "Cartes de Jeu",
-      "description": "Free Fire, PUBG Mobile, Call of Duty Mobile et plus. Obtenez vos diamants et crédits instantanément."
+      "description": "Livraison instantanée de cartes pour Free Fire, PUBG, Call of Duty Mobile, Mobile Legends et eFootball"
     },
     "mobileRecharge": {
       "title": "Recharge Mobile",
-      "description": "Forfaits data Ooredoo, Orange, Tunisie Telecom. Restez connecté avec les meilleurs tarifs."
-    }
-  },
-  "categories": {
-    "all": "Tous les Produits",
-    "games": "Cartes de Jeu",
-    "recharge": "Recharge Mobile"
-  },
-  "products": {
-    "popular": "Populaire",
-    "addToCart": "Ajouter au Panier",
-    "validity": "Validité 30 jours",
-    "diamonds": "Diamants",
-    "credits": "Crédits",
-    "noProducts": "Aucun produit trouvé",
-    "noProductsDesc": "Essayez d'ajuster votre recherche ou critères de filtre",
-    "loading": "Chargement des produits..."
-  },
-  "cart": {
-    "title": "Panier d'Achat",
-    "empty": "Votre panier est vide",
-    "emptyDesc": "Ajoutez des produits pour commencer!",
-    "item": "article",
-    "items": "articles",
-    "each": "chacun",
-    "total": "Total",
-    "checkout": "Procéder au Paiement",
-    "loading": "Chargement du panier...",
-    "addedToCart": "Ajouté au panier!",
-    "addedDesc": "{{productName}} ({{quantity}}) a été ajouté à votre panier."
-  },
-  "checkout": {
-    "title": "Paiement",
-    "orderSummary": "Résumé de Commande",
-    "total": "Total",
-    "paymentInstructions": "Instructions de Paiement",
-    "paymentDesc": "Envoyez {{amount}} à l'un de ces numéros D17:",
-    "paymentTip": "💡 Après le paiement, téléchargez une capture d'écran et remplissez vos détails ci-dessous.",
-    "customerInfo": "Informations Client",
-    "fullName": "Nom Complet",
-    "phoneNumber": "Numéro de Téléphone",
-    "email": "Email (Optionnel)",
-    "paymentScreenshot": "Capture d'Écran de Paiement",
-    "uploadScreenshot": "Télécharger Capture",
-    "uploadDesc": "Téléchargez une capture d'écran de votre confirmation de paiement D17",
-    "removeImage": "Supprimer l'Image",
-    "submitOrder": "Soumettre la Commande",
-    "submittingOrder": "Soumission de la Commande...",
-    "orderSubmitted": "Commande soumise!",
-    "orderSubmittedDesc": "Votre commande a été soumise avec succès. Nous la traiterons sous peu.",
-    "loadingPaymentNumbers": "Chargement des numéros de paiement...",
-    "errors": {
-      "nameRequired": "Veuillez entrer votre nom",
-      "phoneRequired": "Veuillez entrer votre numéro de téléphone",
-      "screenshotRequired": "Veuillez télécharger une capture d'écran de paiement",
-      "submitError": "Échec de soumission de commande. Veuillez réessayer."
+      "description": "Rechargez votre téléphone avec les forfaits Ooredoo, Orange et Tunisie Telecom"
     }
   },
   "footer": {
-    "description": "Votre partenaire de confiance pour les cartes de jeu et la recharge mobile en Tunisie",
+    "description": "Votre plateforme de confiance pour les cartes de jeu et la recharge mobile en Tunisie",
     "quickLinks": "Liens Rapides",
     "gamingCards": "Cartes de Jeu",
     "mobileRecharge": "Recharge Mobile",
-    "support": "Support",
-    "contact": "Contact",
-    "contactInfo": "Infos Contact",
+    "support": "Support 24/7",
+    "contact": "Nous Contacter",
+    "contactInfo": "Informations de Contact",
     "support24": "Support 24/7",
     "copyright": "© 2024 Chargili. Tous droits réservés."
   },
-  "language": {
-    "english": "English",
-    "arabic": "العربية",
-    "french": "Français"
+  "whatsapp": {
+    "defaultMessage": "Bonjour! J'ai besoin d'aide avec ma commande."
   }
 }

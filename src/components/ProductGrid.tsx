@@ -5,7 +5,7 @@ import { ProductSection } from './ProductSection';
 import { useProducts } from '../hooks/useProducts';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Gamepad2, Smartphone, Grid3X3 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { defaultGames, defaultProviders } from '../data/defaultData';
 
@@ -98,10 +98,28 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
     <section className="py-16 bg-gradient-to-br from-slate-50 to-purple-50">
       <div className="container mx-auto px-4">
         <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="mb-8">
-          <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto">
-            <TabsTrigger value="all">{t('categories.all')}</TabsTrigger>
-            <TabsTrigger value="games">Recharge Jeux</TabsTrigger>
-            <TabsTrigger value="recharge">Recharge Internet</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-3 max-w-2xl mx-auto bg-white/80 backdrop-blur-sm border border-purple-200 shadow-lg rounded-2xl p-2">
+            <TabsTrigger 
+              value="all" 
+              className="flex items-center gap-2 rounded-xl font-semibold data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-600 data-[state=active]:text-white transition-all duration-300"
+            >
+              <Grid3X3 className="w-4 h-4" />
+              {t('categories.allProducts')}
+            </TabsTrigger>
+            <TabsTrigger 
+              value="games"
+              className="flex items-center gap-2 rounded-xl font-semibold data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-500 data-[state=active]:to-red-600 data-[state=active]:text-white transition-all duration-300"
+            >
+              <Gamepad2 className="w-4 h-4" />
+              {t('categories.rechargeGames')}
+            </TabsTrigger>
+            <TabsTrigger 
+              value="recharge"
+              className="flex items-center gap-2 rounded-xl font-semibold data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white transition-all duration-300"
+            >
+              <Smartphone className="w-4 h-4" />
+              {t('categories.rechargeInternet')}
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="all" className="space-y-12">
