@@ -1,9 +1,9 @@
 
 import { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, doc, setDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
 import { Product } from '../types';
-import { initializeDefaultData } from '../data/defaultData';
+import { defaultProducts } from '../data/defaultData';
 
 export const useProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -31,21 +31,29 @@ export const useProducts = () => {
         // If no products exist, initialize default data
         if (fetchedProducts.length === 0) {
           console.log('No products found, initializing default data...');
-          await initializeDefaultData(db);
           
-          // Fetch again after initialization
-          const newQuerySnapshot = await getDocs(collection(db, 'products'));
-          const newProducts: Product[] = [];
-          
-          newQuerySnapshot.forEach((doc) => {
-            const data = doc.data();
-            newProducts.push({
-              id: doc.id,
-              ...data
-            } as Product);
+          // Add all default products to Firebase with their original IDs
+          const initPromises = defaultProducts.map(async (product) => {
+            const productRef = doc(db, 'products', product.id);
+            await setDoc(productRef, {
+              name: product.name,
+              price: product.price,
+              category: product.category,
+              image: product.image,
+              description: product.description,
+              gameId: product.gameId,
+              provider: product.provider,
+              data: product.data,
+              providerId: product.providerId
+            });
+            return product;
           });
           
-          setProducts(newProducts);
+          await Promise.all(initPromises);
+          console.log('Default products initialized successfully');
+          
+          // Set the default products directly instead of fetching again
+          setProducts(defaultProducts);
         } else {
           setProducts(fetchedProducts);
         }
@@ -53,8 +61,10 @@ export const useProducts = () => {
         setError(null);
       } catch (err) {
         console.error('Error fetching products:', err);
-        setProducts([]);
-        setError('Failed to fetch products from database');
+        // Fallback to default products if Firebase fails
+        console.log('Using default products as fallback...');
+        setProducts(defaultProducts);
+        setError('Using offline data - Firebase connection failed');
       } finally {
         setLoading(false);
       }

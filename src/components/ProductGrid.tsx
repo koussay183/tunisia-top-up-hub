@@ -86,10 +86,11 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
     );
   }
 
-  if (error) {
+  if (error && products.length === 0) {
     return (
       <div className="text-center py-8">
         <p className="text-red-500 mb-4">{error}</p>
+        <p className="text-gray-600">Please check your internet connection and try again.</p>
       </div>
     );
   }
@@ -97,6 +98,12 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
   return (
     <section className="py-16 bg-gradient-to-br from-slate-50 to-purple-50">
       <div className="container mx-auto px-4">
+        {error && (
+          <div className="mb-4 p-4 bg-yellow-100 border border-yellow-400 text-yellow-700 rounded-lg">
+            <p className="text-sm">{error}</p>
+          </div>
+        )}
+
         <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="mb-8">
           <TabsList className="grid w-full grid-cols-3 max-w-2xl mx-auto bg-white/90 backdrop-blur-sm border border-purple-200 shadow-xl rounded-2xl p-1 h-16">
             <TabsTrigger 
@@ -185,6 +192,11 @@ export const ProductGrid = ({ searchQuery }: ProductGridProps) => {
             <div className="text-gray-400 text-6xl mb-4">🎮</div>
             <h3 className="text-xl font-semibold text-gray-600 mb-2">{t('products.noProducts')}</h3>
             <p className="text-gray-500">{t('products.noProductsDesc')}</p>
+            {products.length > 0 && (
+              <p className="text-sm text-gray-400 mt-2">
+                Showing 0 of {products.length} total products
+              </p>
+            )}
           </div>
         )}
       </div>
